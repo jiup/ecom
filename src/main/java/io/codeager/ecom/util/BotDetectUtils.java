@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.util;
+package io.codeager.ecom.util;
 
 import com.captcha.botdetect.*;
 import com.captcha.botdetect.web.servlet.Captcha;
@@ -25,7 +25,7 @@ import javax.servlet.ServletRegistration;
 import javax.servlet.ServletRequest;
 import java.util.ArrayList;
 
-import static com.codeager.ecom.util.Routing.API_BASE;
+import static io.codeager.ecom.util.Routing.API_BASE;
 
 /**
  * @author Jiupeng Zhang

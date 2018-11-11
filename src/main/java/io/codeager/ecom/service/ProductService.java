@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.service;
+package io.codeager.ecom.service;
 
 import com.github.pagehelper.Page;
-import com.codeager.ecom.domain.Product;
-import com.codeager.ecom.domain.ProductDetail;
-import com.codeager.ecom.domain.ProductImage;
-import com.codeager.ecom.domain.ProductLabel;
-import com.codeager.ecom.dto.form.ProductForm;
-import com.codeager.ecom.dto.form.ProductInitForm;
-import com.codeager.ecom.dto.view.ProductView;
+import io.codeager.ecom.domain.Product;
+import io.codeager.ecom.domain.ProductDetail;
+import io.codeager.ecom.domain.ProductImage;
+import io.codeager.ecom.domain.ProductLabel;
+import io.codeager.ecom.dto.form.ProductForm;
+import io.codeager.ecom.dto.form.ProductInitForm;
+import io.codeager.ecom.dto.view.ProductView;
 
 import java.util.List;
 

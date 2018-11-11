@@ -14,18 +14,18 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.controller.api;
+package io.codeager.ecom.controller.api;
 
 import com.google.common.util.concurrent.RateLimiter;
-import com.codeager.ecom.controller.LimitExceededException;
-import com.codeager.ecom.dto.form.MemberRegisterForm;
-import com.codeager.ecom.dto.view.$;
-import com.codeager.ecom.dto.view.ResponseCode;
-import com.codeager.ecom.dto.view.RestResponse;
-import com.codeager.ecom.util.Pattern;
-import com.codeager.portal.Role;
-import com.codeager.portal.annotation.Authenticate;
-import com.codeager.portal.util.Constant;
+import io.codeager.ecom.controller.LimitExceededException;
+import io.codeager.ecom.dto.form.MemberRegisterForm;
+import io.codeager.ecom.dto.view.$;
+import io.codeager.ecom.dto.view.ResponseCode;
+import io.codeager.ecom.dto.view.RestResponse;
+import io.codeager.ecom.util.Pattern;
+import io.codeager.portal.Role;
+import io.codeager.portal.annotation.Authenticate;
+import io.codeager.portal.util.Constant;
 import io.swagger.annotations.ApiParam;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -34,7 +34,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-import static com.codeager.ecom.util.Routing.*;
+import static io.codeager.ecom.util.Routing.*;
 
 /**
  * @author Jiupeng Zhang
@@ -46,7 +46,7 @@ public class MemberController {
     private static final RateLimiter FORMAT_CHECK_REQUEST_LIMITER;
 
     static {
-        FORMAT_CHECK_REQUEST_LIMITER = RateLimiter.create(com.codeager.ecom.util.Constant.FORMAT_CHECK_REQUEST_LIMIT_RATE);
+        FORMAT_CHECK_REQUEST_LIMITER = RateLimiter.create(io.codeager.ecom.util.Constant.FORMAT_CHECK_REQUEST_LIMIT_RATE);
     }
 
     @PutMapping(MEMBER_LOGIN)

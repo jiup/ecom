@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.initializer;
+package io.codeager.ecom.initializer;
 
-import com.codeager.ecom.config.RootConfig;
-import com.codeager.ecom.config.WebConfig;
-import com.codeager.ecom.util.BotDetectUtils;
-import com.codeager.ecom.util.EncodingUtils;
-import com.codeager.ecom.util.LogbackUtils;
+import io.codeager.ecom.config.RootConfig;
+import io.codeager.ecom.config.WebConfig;
+import io.codeager.ecom.util.BotDetectUtils;
+import io.codeager.ecom.util.EncodingUtils;
+import io.codeager.ecom.util.LogbackUtils;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;

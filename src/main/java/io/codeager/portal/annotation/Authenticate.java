@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.codeager.portal.annotation;
+package io.codeager.portal.annotation;
 
-import com.codeager.portal.AuthenticationHandler;
-import com.codeager.portal.DefaultAuthenticationHandler;
-import com.codeager.portal.Role;
+import io.codeager.portal.AuthenticationHandler;
+import io.codeager.portal.DefaultAuthenticationHandler;
+import io.codeager.portal.Role;
 
 import java.lang.annotation.*;
 

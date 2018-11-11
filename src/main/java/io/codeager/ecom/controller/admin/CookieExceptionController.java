@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.controller.admin;
+package io.codeager.ecom.controller.admin;
 
-import com.codeager.ecom.controller.CookiePassingException;
+import io.codeager.ecom.controller.CookiePassingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import static com.codeager.ecom.util.Routing.*;
+import static io.codeager.ecom.util.Routing.*;
 
 /**
  * @author Jiupeng Zhang

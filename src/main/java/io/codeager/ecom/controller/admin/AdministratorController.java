@@ -14,20 +14,20 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.controller.admin;
+package io.codeager.ecom.controller.admin;
 
-import com.codeager.ecom.controller.CookiePassingException;
-import com.codeager.ecom.controller.FormValidationException;
-import com.codeager.ecom.dto.form.AdminLoginForm;
-import com.codeager.ecom.service.RegisterMailService;
-import com.codeager.portal.AuthenticationHandler;
-import com.codeager.portal.Role;
-import com.codeager.portal.annotation.Authenticate;
-import com.codeager.portal.domain.Administrator;
-import com.codeager.portal.service.AdministratorService;
-import com.codeager.portal.util.Constant;
-import com.codeager.portal.util.IdentityLocator;
-import com.codeager.portal.util.TokenHelper;
+import io.codeager.ecom.controller.CookiePassingException;
+import io.codeager.ecom.controller.FormValidationException;
+import io.codeager.ecom.dto.form.AdminLoginForm;
+import io.codeager.ecom.service.RegisterMailService;
+import io.codeager.portal.AuthenticationHandler;
+import io.codeager.portal.Role;
+import io.codeager.portal.annotation.Authenticate;
+import io.codeager.portal.domain.Administrator;
+import io.codeager.portal.service.AdministratorService;
+import io.codeager.portal.util.Constant;
+import io.codeager.portal.util.IdentityLocator;
+import io.codeager.portal.util.TokenHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
@@ -42,8 +42,8 @@ import java.time.ZonedDateTime;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.codeager.ecom.util.Routing.*;
-import static com.codeager.portal.Role.*;
+import static io.codeager.ecom.util.Routing.*;
+import static io.codeager.portal.Role.*;
 
 /**
  * @author Jiupeng Zhang

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.service;
+package io.codeager.ecom.service;
 
 import java.io.InputStream;
 

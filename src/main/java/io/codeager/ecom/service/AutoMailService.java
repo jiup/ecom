@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.service;
+package io.codeager.ecom.service;
 
 import com.github.pagehelper.Page;
-import com.codeager.ecom.domain.AutoMail;
-import com.codeager.ecom.domain.MailTemplate;
-import com.codeager.ecom.dto.form.MailTemplateForm;
+import io.codeager.ecom.domain.AutoMail;
+import io.codeager.ecom.domain.MailTemplate;
+import io.codeager.ecom.dto.form.MailTemplateForm;
 
 /**
  * @author Jiupeng Zhang

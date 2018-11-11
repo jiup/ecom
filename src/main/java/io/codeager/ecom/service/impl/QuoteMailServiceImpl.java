@@ -14,18 +14,18 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.service.impl;
+package io.codeager.ecom.service.impl;
 
 import com.google.common.base.Strings;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
-import com.codeager.ecom.dao.mapper.QuoteRequestMapper;
-import com.codeager.ecom.domain.QuoteRequest;
-import com.codeager.ecom.dto.form.QuoteRequestForm;
-import com.codeager.ecom.service.QuoteMailService;
-import com.codeager.ecom.util.Constant;
-import com.codeager.plugin.MailSender;
+import io.codeager.ecom.dao.mapper.QuoteRequestMapper;
+import io.codeager.ecom.domain.QuoteRequest;
+import io.codeager.ecom.dto.form.QuoteRequestForm;
+import io.codeager.ecom.service.QuoteMailService;
+import io.codeager.ecom.util.Constant;
+import io.codeager.plugin.MailSender;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

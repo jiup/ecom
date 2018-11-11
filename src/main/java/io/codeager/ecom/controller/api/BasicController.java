@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.controller.api;
+package io.codeager.ecom.controller.api;
 
-import com.codeager.ecom.dto.view.$;
-import com.codeager.ecom.dto.view.RegularRestResponse;
+import io.codeager.ecom.dto.view.$;
+import io.codeager.ecom.dto.view.RegularRestResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
-import static com.codeager.ecom.util.Routing.*;
+import static io.codeager.ecom.util.Routing.*;
 
 /**
  * @author Jiupeng Zhang

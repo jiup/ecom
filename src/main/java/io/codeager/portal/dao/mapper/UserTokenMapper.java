@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.codeager.portal.dao.mapper;
+package io.codeager.portal.dao.mapper;
 
-import com.codeager.portal.Role;
-import com.codeager.portal.dao.type.RoleTypeHandler;
-import com.codeager.portal.domain.UserToken;
+import io.codeager.portal.Role;
+import io.codeager.portal.dao.type.RoleTypeHandler;
+import io.codeager.portal.domain.UserToken;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
@@ -60,7 +60,7 @@ public interface UserTokenMapper {
     @Insert({
             "INSERT INTO t_user_access (USER_HASH, TOKEN, USER_ID, FAILURE_COUNT, SESSION_ROLE, SESSION_IP, SESSION_UA, EXPIRE_TIME, CREATE_TIME)",
             "VALUES (#{userHash}, #{token}, #{userId}, #{failureCount}, " +
-                    "#{sessionRole,typeHandler=com.codeager.portal.dao.type.RoleTypeHandler}," +
+                    "#{sessionRole,typeHandler=io.codeager.portal.dao.type.RoleTypeHandler}," +
                     "#{sessionIp}, #{sessionUserAgent}, #{expireTime}, #{createTime})"
     })
     void insert(UserToken userToken);
@@ -90,7 +90,7 @@ public interface UserTokenMapper {
             "TOKEN = #{token},",
             "USER_ID = #{userId},",
             "FAILURE_COUNT = #{failureCount},",
-            "SESSION_ROLE = #{sessionRole,typeHandler=com.codeager.portal.dao.type.RoleTypeHandler},",
+            "SESSION_ROLE = #{sessionRole,typeHandler=io.codeager.portal.dao.type.RoleTypeHandler},",
             "SESSION_IP = #{sessionIp},",
             "SESSION_UA = #{sessionUserAgent},",
             "EXPIRE_TIME = #{expireTime}",
@@ -104,7 +104,7 @@ public interface UserTokenMapper {
             "USER_HASH = #{userHash},",
             "USER_ID = #{userId},",
             "FAILURE_COUNT = #{failureCount},",
-            "SESSION_ROLE = #{sessionRole,typeHandler=com.codeager.portal.dao.type.RoleTypeHandler},",
+            "SESSION_ROLE = #{sessionRole,typeHandler=io.codeager.portal.dao.type.RoleTypeHandler},",
             "SESSION_IP = #{sessionIp},",
             "SESSION_UA = #{sessionUserAgent},",
             "EXPIRE_TIME = #{expireTime}",
@@ -115,7 +115,7 @@ public interface UserTokenMapper {
     @Update({
             "UPDATE t_user_access",
             "SET",
-            "SESSION_ROLE = #{role,typeHandler=com.codeager.portal.dao.type.RoleTypeHandler},",
+            "SESSION_ROLE = #{role,typeHandler=io.codeager.portal.dao.type.RoleTypeHandler},",
             "WHERE USER_ACCESS_ID = #{id}"
     })
     void updateRoleById(@Param("id") long id, @Param("role") Role role);

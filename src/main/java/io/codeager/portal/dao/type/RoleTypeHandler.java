@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.codeager.portal.dao.type;
+package io.codeager.portal.dao.type;
 
-import com.codeager.portal.Role;
+import io.codeager.portal.Role;
 import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.MappedTypes;
 import org.apache.ibatis.type.TypeHandler;

@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package com.codeager.portal.service.impl;
+package io.codeager.portal.service.impl;
 
-import com.codeager.portal.LoginException;
-import com.codeager.portal.Role;
-import com.codeager.portal.dao.mapper.AdministratorMapper;
-import com.codeager.portal.domain.Administrator;
-import com.codeager.portal.domain.UserToken;
-import com.codeager.portal.service.AdministratorService;
-import com.codeager.portal.service.UserTokenService;
-import com.codeager.portal.util.Constant;
-import com.codeager.portal.util.TokenHelper;
+import io.codeager.portal.LoginException;
+import io.codeager.portal.Role;
+import io.codeager.portal.dao.mapper.AdministratorMapper;
+import io.codeager.portal.domain.Administrator;
+import io.codeager.portal.domain.UserToken;
+import io.codeager.portal.service.AdministratorService;
+import io.codeager.portal.service.UserTokenService;
+import io.codeager.portal.util.Constant;
+import io.codeager.portal.util.TokenHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

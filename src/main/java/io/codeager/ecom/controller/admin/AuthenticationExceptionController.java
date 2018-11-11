@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.controller.admin;
+package io.codeager.ecom.controller.admin;
 
-import com.codeager.portal.*;
-import com.codeager.portal.domain.UserToken;
-import com.codeager.portal.service.UserTokenService;
+import io.codeager.portal.*;
+import io.codeager.portal.domain.UserToken;
+import io.codeager.portal.service.UserTokenService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.Objects;
 
-import static com.codeager.ecom.util.Routing.*;
+import static io.codeager.ecom.util.Routing.*;
 
 /**
  * @author Jiupeng Zhang

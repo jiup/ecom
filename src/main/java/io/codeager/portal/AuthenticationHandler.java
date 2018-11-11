@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.codeager.portal;
+package io.codeager.portal;
 
 import javax.servlet.http.HttpServletRequest;
 

@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.controller.admin;
+package io.codeager.ecom.controller.admin;
 
-import com.codeager.ecom.util.Resource;
-import com.codeager.ecom.util.Routing;
+import io.codeager.ecom.util.Resource;
+import io.codeager.ecom.util.Routing;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import static com.codeager.ecom.util.Routing.FAVICON;
+import static io.codeager.ecom.util.Routing.FAVICON;
 
 /**
  * Favicon Forwarder

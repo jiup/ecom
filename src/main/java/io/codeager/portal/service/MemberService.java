@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.codeager.portal.service;
+package io.codeager.portal.service;
 
 /**
  * @author Jiupeng Zhang

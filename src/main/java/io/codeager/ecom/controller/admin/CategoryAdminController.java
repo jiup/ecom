@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.controller.admin;
+package io.codeager.ecom.controller.admin;
 
-import com.codeager.ecom.controller.FormValidationException;
-import com.codeager.ecom.domain.Product;
-import com.codeager.ecom.dto.view.FancyTreeNode;
-import com.codeager.ecom.service.CategoryService;
-import com.codeager.ecom.service.ProductService;
-import com.codeager.portal.annotation.Authenticate;
+import io.codeager.ecom.controller.FormValidationException;
+import io.codeager.ecom.domain.Product;
+import io.codeager.ecom.dto.view.FancyTreeNode;
+import io.codeager.ecom.service.CategoryService;
+import io.codeager.ecom.service.ProductService;
+import io.codeager.portal.annotation.Authenticate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
 import org.springframework.stereotype.Controller;
@@ -31,9 +31,9 @@ import org.springframework.web.bind.annotation.*;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
-import static com.codeager.ecom.util.Routing.ADMIN_BASE;
-import static com.codeager.ecom.util.Routing.redirect;
-import static com.codeager.portal.Role.ADMIN;
+import static io.codeager.ecom.util.Routing.ADMIN_BASE;
+import static io.codeager.ecom.util.Routing.redirect;
+import static io.codeager.portal.Role.ADMIN;
 
 /**
  * @author Jiupeng Zhang

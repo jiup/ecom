@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.dao.type;
+package io.codeager.ecom.dao.type;
 
 import com.google.common.base.Joiner;
 import org.apache.ibatis.type.JdbcType;

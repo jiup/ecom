@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.service;
+package io.codeager.ecom.service;
 
 import com.github.pagehelper.Page;
-import com.codeager.ecom.domain.ExtCustomer;
-import com.codeager.ecom.dto.form.ExtCustomerForm;
+import io.codeager.ecom.domain.ExtCustomer;
+import io.codeager.ecom.dto.form.ExtCustomerForm;
 
 /**
  * @author Jiupeng Zhang

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.dto.view;
+package io.codeager.ecom.dto.view;
 
 import java.io.Serializable;
 import java.util.ArrayList;

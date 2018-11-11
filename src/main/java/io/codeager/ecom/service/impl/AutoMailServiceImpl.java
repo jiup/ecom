@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.service.impl;
+package io.codeager.ecom.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -22,17 +22,17 @@ import com.google.common.base.Strings;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
-import com.codeager.ecom.dao.mapper.AutoMailMapper;
-import com.codeager.ecom.dao.mapper.MailTemplateMapper;
-import com.codeager.ecom.domain.AutoMail;
-import com.codeager.ecom.domain.ExtCustomer;
-import com.codeager.ecom.domain.MailTemplate;
-import com.codeager.ecom.dto.form.MailTemplateForm;
-import com.codeager.ecom.service.AutoMailService;
-import com.codeager.ecom.service.ExtCustomerService;
-import com.codeager.ecom.util.Constant;
-import com.codeager.plugin.MailSender;
-import com.codeager.portal.util.TokenHelper;
+import io.codeager.ecom.dao.mapper.AutoMailMapper;
+import io.codeager.ecom.dao.mapper.MailTemplateMapper;
+import io.codeager.ecom.domain.AutoMail;
+import io.codeager.ecom.domain.ExtCustomer;
+import io.codeager.ecom.domain.MailTemplate;
+import io.codeager.ecom.dto.form.MailTemplateForm;
+import io.codeager.ecom.service.AutoMailService;
+import io.codeager.ecom.service.ExtCustomerService;
+import io.codeager.ecom.util.Constant;
+import io.codeager.plugin.MailSender;
+import io.codeager.portal.util.TokenHelper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

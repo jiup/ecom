@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.service;
+package io.codeager.ecom.service;
 
 import com.github.pagehelper.Page;
-import com.codeager.ecom.domain.StockKeepingUnit;
-import com.codeager.ecom.dto.form.InventoryForm;
-import com.codeager.ecom.dto.form.InventoryInitForm;
+import io.codeager.ecom.domain.StockKeepingUnit;
+import io.codeager.ecom.dto.form.InventoryForm;
+import io.codeager.ecom.dto.form.InventoryInitForm;
 
 /**
  * @author Jiupeng Zhang

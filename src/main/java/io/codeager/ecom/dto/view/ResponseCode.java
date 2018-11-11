@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.dto.view;
+package io.codeager.ecom.dto.view;
 
 import org.springframework.http.HttpStatus;
 

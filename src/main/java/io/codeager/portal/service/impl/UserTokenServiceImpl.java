@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.codeager.portal.service.impl;
+package io.codeager.portal.service.impl;
 
-import com.codeager.portal.dao.mapper.UserTokenMapper;
-import com.codeager.portal.domain.UserToken;
-import com.codeager.portal.service.UserTokenService;
+import io.codeager.portal.dao.mapper.UserTokenMapper;
+import io.codeager.portal.domain.UserToken;
+import io.codeager.portal.service.UserTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

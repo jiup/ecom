@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.domain;
+package io.codeager.ecom.domain;
 
 import java.io.Serializable;
 import java.time.ZonedDateTime;

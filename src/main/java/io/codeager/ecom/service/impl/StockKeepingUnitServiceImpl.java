@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.service.impl;
+package io.codeager.ecom.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.codeager.ecom.dao.mapper.ProductMapper;
-import com.codeager.ecom.dao.mapper.SpecificationMapper;
-import com.codeager.ecom.dao.mapper.StockKeepingUnitMapper;
-import com.codeager.ecom.domain.StockKeepingUnit;
-import com.codeager.ecom.dto.form.InventoryForm;
-import com.codeager.ecom.dto.form.InventoryInitForm;
-import com.codeager.ecom.service.StockKeepingUnitService;
+import io.codeager.ecom.dao.mapper.ProductMapper;
+import io.codeager.ecom.dao.mapper.SpecificationMapper;
+import io.codeager.ecom.dao.mapper.StockKeepingUnitMapper;
+import io.codeager.ecom.domain.StockKeepingUnit;
+import io.codeager.ecom.dto.form.InventoryForm;
+import io.codeager.ecom.dto.form.InventoryInitForm;
+import io.codeager.ecom.service.StockKeepingUnitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

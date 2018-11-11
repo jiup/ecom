@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.service.impl;
+package io.codeager.ecom.service.impl;
 
 import com.google.common.util.concurrent.ListeningExecutorService;
 import com.google.common.util.concurrent.MoreExecutors;
-import com.codeager.plugin.MailSender;
-import com.codeager.plugin.Plugin;
+import io.codeager.plugin.MailSender;
+import io.codeager.plugin.Plugin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

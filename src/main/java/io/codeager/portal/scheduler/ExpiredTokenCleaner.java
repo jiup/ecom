@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.codeager.portal.scheduler;
+package io.codeager.portal.scheduler;
 
-import com.codeager.portal.service.UserTokenService;
+import io.codeager.portal.service.UserTokenService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

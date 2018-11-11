@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.config;
+package io.codeager.ecom.config;
 
 import com.github.pagehelper.PageInterceptor;
 import org.apache.ibatis.plugin.Interceptor;
@@ -46,13 +46,13 @@ import java.util.Properties;
  */
 @Configuration
 @ComponentScan({
-        "com.codeager.*.aspect",
-        "com.codeager.*.service",
-        "com.codeager.*.dao",
-        "com.codeager.*.scheduler",
-        "com.codeager.*.util",
+        "io.codeager.*.aspect",
+        "io.codeager.*.service",
+        "io.codeager.*.dao",
+        "io.codeager.*.scheduler",
+        "io.codeager.*.util",
 })
-@MapperScan("com.codeager.*.dao.*")
+@MapperScan("io.codeager.*.dao.*")
 @EnableTransactionManagement
 @EnableAspectJAutoProxy
 @EnableScheduling

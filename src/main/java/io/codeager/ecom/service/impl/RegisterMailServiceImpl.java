@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.service.impl;
+package io.codeager.ecom.service.impl;
 
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
-import com.codeager.ecom.service.RegisterMailService;
-import com.codeager.plugin.MailSender;
-import com.codeager.portal.domain.Administrator;
-import com.codeager.portal.service.AdministratorService;
+import io.codeager.ecom.service.RegisterMailService;
+import io.codeager.plugin.MailSender;
+import io.codeager.portal.domain.Administrator;
+import io.codeager.portal.service.AdministratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

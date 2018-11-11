@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.dto.validator.annotation;
+package io.codeager.ecom.dto.validator.annotation;
 
-import com.codeager.ecom.dto.validator.FieldsValueMatchValidator;
+import io.codeager.ecom.dto.validator.FieldsValueMatchValidator;
 
 import javax.validation.Constraint;
 import java.lang.annotation.ElementType;

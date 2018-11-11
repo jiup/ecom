@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.controller.admin;
+package io.codeager.ecom.controller.admin;
 
 import com.github.pagehelper.Page;
-import com.codeager.ecom.controller.FormValidationException;
-import com.codeager.ecom.domain.Product;
-import com.codeager.ecom.domain.ProductDetail;
-import com.codeager.ecom.domain.ProductImage;
-import com.codeager.ecom.dto.form.ProductForm;
-import com.codeager.ecom.dto.form.ProductInitForm;
-import com.codeager.ecom.service.CategoryService;
-import com.codeager.ecom.service.ImageUploadService;
-import com.codeager.ecom.service.ProductService;
-import com.codeager.portal.annotation.Authenticate;
+import io.codeager.ecom.controller.FormValidationException;
+import io.codeager.ecom.domain.Product;
+import io.codeager.ecom.domain.ProductDetail;
+import io.codeager.ecom.domain.ProductImage;
+import io.codeager.ecom.dto.form.ProductForm;
+import io.codeager.ecom.dto.form.ProductInitForm;
+import io.codeager.ecom.service.CategoryService;
+import io.codeager.ecom.service.ImageUploadService;
+import io.codeager.ecom.service.ProductService;
+import io.codeager.portal.annotation.Authenticate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,10 +38,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static com.codeager.ecom.util.Routing.ADMIN_BASE;
-import static com.codeager.ecom.util.Routing.redirect;
-import static com.codeager.portal.Role.ADMIN;
-import static com.codeager.portal.Role.EDITOR;
+import static io.codeager.ecom.util.Routing.ADMIN_BASE;
+import static io.codeager.ecom.util.Routing.redirect;
+import static io.codeager.portal.Role.ADMIN;
+import static io.codeager.portal.Role.EDITOR;
 
 /**
  * @author Jiupeng Zhang

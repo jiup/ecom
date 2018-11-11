@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.dao.mapper;
+package io.codeager.ecom.dao.mapper;
 
-import com.codeager.ecom.dao.type.CommaSeparatedStringTypeHandler;
-import com.codeager.ecom.domain.ProductLabel;
+import io.codeager.ecom.dao.type.CommaSeparatedStringTypeHandler;
+import io.codeager.ecom.domain.ProductLabel;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;

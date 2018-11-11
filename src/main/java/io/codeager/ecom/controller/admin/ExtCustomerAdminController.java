@@ -14,23 +14,23 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.controller.admin;
+package io.codeager.ecom.controller.admin;
 
 import com.github.pagehelper.Page;
-import com.codeager.ecom.domain.ExtCustomer;
-import com.codeager.ecom.dto.form.ExtCustomerForm;
-import com.codeager.ecom.service.ExtCustomerService;
-import com.codeager.portal.annotation.Authenticate;
-import com.codeager.portal.domain.Administrator;
+import io.codeager.ecom.domain.ExtCustomer;
+import io.codeager.ecom.dto.form.ExtCustomerForm;
+import io.codeager.ecom.service.ExtCustomerService;
+import io.codeager.portal.annotation.Authenticate;
+import io.codeager.portal.domain.Administrator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import static com.codeager.ecom.util.Routing.ADMIN_BASE;
-import static com.codeager.ecom.util.Routing.redirect;
-import static com.codeager.portal.Role.ADMIN;
-import static com.codeager.portal.Role.EDITOR;
+import static io.codeager.ecom.util.Routing.ADMIN_BASE;
+import static io.codeager.ecom.util.Routing.redirect;
+import static io.codeager.portal.Role.ADMIN;
+import static io.codeager.portal.Role.EDITOR;
 
 /**
  * @author Jiupeng Zhang

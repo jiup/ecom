@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.controller.admin;
+package io.codeager.ecom.controller.admin;
 
-import com.codeager.ecom.controller.FormValidationException;
+import io.codeager.ecom.controller.FormValidationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +28,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
-import static com.codeager.ecom.util.Routing.ADMIN_BASE;
-import static com.codeager.ecom.util.Routing.redirect;
+import static io.codeager.ecom.util.Routing.ADMIN_BASE;
+import static io.codeager.ecom.util.Routing.redirect;
 
 /**
  * @author Jiupeng Zhang

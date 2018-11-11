@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.service.impl;
+package io.codeager.ecom.service.impl;
 
 import com.google.common.util.concurrent.ListeningExecutorService;
 import com.google.common.util.concurrent.MoreExecutors;
-import com.codeager.ecom.service.ImageUploadService;
-import com.codeager.plugin.ImageUploader;
-import com.codeager.plugin.Plugin;
+import io.codeager.ecom.service.ImageUploadService;
+import io.codeager.plugin.ImageUploader;
+import io.codeager.plugin.Plugin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

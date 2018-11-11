@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.util.springfox;
+package io.codeager.ecom.util.springfox;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;

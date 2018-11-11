@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.controller;
+package io.codeager.ecom.controller;
 
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;

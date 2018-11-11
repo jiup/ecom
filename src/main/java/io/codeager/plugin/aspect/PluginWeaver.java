@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.codeager.plugin.aspect;
+package io.codeager.plugin.aspect;
 
-import com.codeager.plugin.Plugin;
+import io.codeager.plugin.Plugin;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -30,7 +30,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class PluginWeaver {
-    @Pointcut("target(com.codeager.plugin.Plugin)")
+    @Pointcut("target(io.codeager.plugin.Plugin)")
     public void pluginExecution() {
     }
 

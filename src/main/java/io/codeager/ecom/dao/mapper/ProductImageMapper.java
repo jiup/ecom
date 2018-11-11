@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.dao.mapper;
+package io.codeager.ecom.dao.mapper;
 
-import com.codeager.ecom.domain.ProductImage;
+import io.codeager.ecom.domain.ProductImage;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 import org.springframework.stereotype.Repository;

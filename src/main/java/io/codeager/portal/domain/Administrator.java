@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.codeager.portal.domain;
+package io.codeager.portal.domain;
 
 import com.google.common.base.MoreObjects;
-import com.codeager.portal.Role;
+import io.codeager.portal.Role;
 
 import java.io.Serializable;
 import java.time.ZonedDateTime;

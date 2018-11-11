@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.dto.form;
+package io.codeager.ecom.dto.form;
 
 import org.hibernate.validator.constraints.NotEmpty;
 

@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.service.impl;
+package io.codeager.ecom.service.impl;
 
 import com.google.common.base.Splitter;
-import com.codeager.ecom.dao.mapper.CategoryMapper;
-import com.codeager.ecom.domain.Category;
-import com.codeager.ecom.dto.view.FancyTreeNode;
-import com.codeager.ecom.service.CategoryService;
+import io.codeager.ecom.dao.mapper.CategoryMapper;
+import io.codeager.ecom.domain.Category;
+import io.codeager.ecom.dto.view.FancyTreeNode;
+import io.codeager.ecom.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -14,18 +14,18 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.controller.api;
+package io.codeager.ecom.controller.api;
 
 import com.google.common.util.concurrent.RateLimiter;
-import com.codeager.ecom.controller.LimitExceededException;
-import com.codeager.ecom.dto.form.QuoteRequestForm;
-import com.codeager.ecom.dto.view.$;
-import com.codeager.ecom.dto.view.ErrorView;
-import com.codeager.ecom.dto.view.ResponseCode;
-import com.codeager.ecom.dto.view.RestResponse;
-import com.codeager.ecom.service.QuoteMailService;
-import com.codeager.ecom.util.BotDetectUtils;
-import com.codeager.ecom.util.Constant;
+import io.codeager.ecom.controller.LimitExceededException;
+import io.codeager.ecom.dto.form.QuoteRequestForm;
+import io.codeager.ecom.dto.view.$;
+import io.codeager.ecom.dto.view.ErrorView;
+import io.codeager.ecom.dto.view.ResponseCode;
+import io.codeager.ecom.dto.view.RestResponse;
+import io.codeager.ecom.service.QuoteMailService;
+import io.codeager.ecom.util.BotDetectUtils;
+import io.codeager.ecom.util.Constant;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -35,8 +35,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-import static com.codeager.ecom.util.Routing.API_BASE;
-import static com.codeager.ecom.util.Routing.QUOTE;
+import static io.codeager.ecom.util.Routing.API_BASE;
+import static io.codeager.ecom.util.Routing.QUOTE;
 
 /**
  * @author Jiupeng Zhang

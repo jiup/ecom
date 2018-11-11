@@ -14,21 +14,21 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.controller.api;
+package io.codeager.ecom.controller.api;
 
 import com.github.pagehelper.Page;
-import com.codeager.ecom.domain.ProductLabel;
-import com.codeager.ecom.dto.view.$;
-import com.codeager.ecom.dto.view.ProductView;
-import com.codeager.ecom.dto.view.ResponseCode;
-import com.codeager.ecom.dto.view.RestResponse;
-import com.codeager.ecom.service.ProductService;
-import com.codeager.ecom.util.Routing;
+import io.codeager.ecom.domain.ProductLabel;
+import io.codeager.ecom.dto.view.$;
+import io.codeager.ecom.dto.view.ProductView;
+import io.codeager.ecom.dto.view.ResponseCode;
+import io.codeager.ecom.dto.view.RestResponse;
+import io.codeager.ecom.service.ProductService;
+import io.codeager.ecom.util.Routing;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import static com.codeager.ecom.util.Routing.API_BASE;
+import static io.codeager.ecom.util.Routing.API_BASE;
 
 /**
  * @author Jiupeng Zhang

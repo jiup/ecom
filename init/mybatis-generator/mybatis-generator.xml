@@ -30,7 +30,7 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="com.codeager.ecom.domain"
+        <javaModelGenerator targetPackage="io.codeager.ecom.domain"
                             targetProject="${project.external.dir}">
             <property name="constructorBased" value="false"/>
             <property name="immutable" value="false"/>
@@ -38,13 +38,13 @@
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="com.codeager.ecom.dao.mapper"
+        <sqlMapGenerator targetPackage="io.codeager.ecom.dao.mapper"
                          targetProject="${project.external.dir}">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <javaClientGenerator type="ANNOTATEDMAPPER"
-                             targetPackage="com.codeager.ecom.dao.mapper"
+                             targetPackage="io.codeager.ecom.dao.mapper"
                              targetProject="${project.external.dir}">
             <!--<property name="rootInterface" value=""/>-->
         </javaClientGenerator>

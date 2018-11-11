@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.aspect;
+package io.codeager.ecom.aspect;
 
 /**
  * @author Jiupeng Zhang

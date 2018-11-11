@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.service;
+package io.codeager.ecom.service;
 
 import com.github.pagehelper.Page;
-import com.codeager.ecom.domain.Specification;
-import com.codeager.ecom.dto.form.SpecificationInitForm;
+import io.codeager.ecom.domain.Specification;
+import io.codeager.ecom.dto.form.SpecificationInitForm;
 
 import java.util.Set;
 

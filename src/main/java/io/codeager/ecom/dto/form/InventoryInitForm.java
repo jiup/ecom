@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.dto.form;
+package io.codeager.ecom.dto.form;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;

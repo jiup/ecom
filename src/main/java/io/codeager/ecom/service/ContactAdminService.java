@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.service;
+package io.codeager.ecom.service;
 
 import com.github.pagehelper.Page;
-import com.codeager.ecom.domain.Contact;
+import io.codeager.ecom.domain.Contact;
 
 /**
  * @author Jiupeng Zhang

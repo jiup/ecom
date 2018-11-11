@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.codeager.portal.util;
+package io.codeager.portal.util;
 
 import com.google.common.base.Preconditions;
 import com.google.common.hash.HashFunction;

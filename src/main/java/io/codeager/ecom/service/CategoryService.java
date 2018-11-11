@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.service;
+package io.codeager.ecom.service;
 
-import com.codeager.ecom.domain.Category;
-import com.codeager.ecom.dto.view.FancyTreeNode;
+import io.codeager.ecom.domain.Category;
+import io.codeager.ecom.dto.view.FancyTreeNode;
 
 import java.util.List;
 

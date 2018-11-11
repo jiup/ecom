@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.dto.validator;
+package io.codeager.ecom.dto.validator;
 
-import com.codeager.ecom.dto.validator.annotation.FieldsValueMatch;
+import io.codeager.ecom.dto.validator.annotation.FieldsValueMatch;
 import org.springframework.beans.BeanWrapperImpl;
 
 import javax.validation.ConstraintValidator;

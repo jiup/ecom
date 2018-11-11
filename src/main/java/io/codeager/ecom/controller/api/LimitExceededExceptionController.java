@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.controller.api;
+package io.codeager.ecom.controller.api;
 
-import com.codeager.ecom.controller.LimitExceededException;
-import com.codeager.ecom.dto.view.$;
-import com.codeager.ecom.dto.view.ResponseCode;
-import com.codeager.ecom.dto.view.RestResponse;
+import io.codeager.ecom.controller.LimitExceededException;
+import io.codeager.ecom.dto.view.$;
+import io.codeager.ecom.dto.view.ResponseCode;
+import io.codeager.ecom.dto.view.RestResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;

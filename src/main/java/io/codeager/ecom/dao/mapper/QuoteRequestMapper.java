@@ -1,6 +1,6 @@
-package com.codeager.ecom.dao.mapper;
+package io.codeager.ecom.dao.mapper;
 
-import com.codeager.ecom.domain.QuoteRequest;
+import io.codeager.ecom.domain.QuoteRequest;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 import org.springframework.stereotype.Repository;

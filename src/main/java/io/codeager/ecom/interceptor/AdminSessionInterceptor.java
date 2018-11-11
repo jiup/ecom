@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.interceptor;
+package io.codeager.ecom.interceptor;
 
-import com.codeager.portal.Role;
-import com.codeager.portal.domain.Administrator;
-import com.codeager.portal.domain.UserToken;
-import com.codeager.portal.service.AdministratorService;
-import com.codeager.portal.service.UserTokenService;
-import com.codeager.portal.util.Constant;
+import io.codeager.portal.Role;
+import io.codeager.portal.domain.Administrator;
+import io.codeager.portal.domain.UserToken;
+import io.codeager.portal.service.AdministratorService;
+import io.codeager.portal.service.UserTokenService;
+import io.codeager.portal.util.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;

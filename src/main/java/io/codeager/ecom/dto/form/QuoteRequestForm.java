@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.dto.form;
+package io.codeager.ecom.dto.form;
 
 import com.google.common.base.MoreObjects;
-import com.codeager.ecom.util.Pattern;
+import io.codeager.ecom.util.Pattern;
 import io.swagger.annotations.ApiParam;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.codeager.portal.util;
+package io.codeager.portal.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.service;
+package io.codeager.ecom.service;
 
-import com.codeager.ecom.dto.form.QuoteRequestForm;
+import io.codeager.ecom.dto.form.QuoteRequestForm;
 
 /**
  * @author Jiupeng Zhang

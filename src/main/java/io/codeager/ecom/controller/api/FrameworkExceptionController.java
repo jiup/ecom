@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.controller.api;
+package io.codeager.ecom.controller.api;
 
-import com.codeager.ecom.dto.view.$;
-import com.codeager.ecom.dto.view.ResponseCode;
+import io.codeager.ecom.dto.view.$;
+import io.codeager.ecom.dto.view.ResponseCode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;

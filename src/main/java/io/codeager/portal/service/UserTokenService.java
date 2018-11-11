@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.codeager.portal.service;
+package io.codeager.portal.service;
 
-import com.codeager.portal.domain.UserToken;
+import io.codeager.portal.domain.UserToken;
 
 /**
  * @author Jiupeng Zhang

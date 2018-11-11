@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.util.springfox;
+package io.codeager.ecom.util.springfox;
 
 import com.google.gson.*;
 import springfox.documentation.swagger.web.UiConfiguration;

@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.service.impl;
+package io.codeager.ecom.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.codeager.ecom.dao.mapper.ContactMapper;
-import com.codeager.ecom.domain.Contact;
-import com.codeager.ecom.service.ContactAdminService;
+import io.codeager.ecom.dao.mapper.ContactMapper;
+import io.codeager.ecom.domain.Contact;
+import io.codeager.ecom.service.ContactAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

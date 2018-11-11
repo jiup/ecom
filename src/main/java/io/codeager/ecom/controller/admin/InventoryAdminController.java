@@ -14,21 +14,21 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.controller.admin;
+package io.codeager.ecom.controller.admin;
 
 import com.github.pagehelper.Page;
-import com.codeager.ecom.controller.FormValidationException;
-import com.codeager.ecom.domain.Product;
-import com.codeager.ecom.domain.Specification;
-import com.codeager.ecom.domain.StockKeepingUnit;
-import com.codeager.ecom.dto.form.InventoryForm;
-import com.codeager.ecom.dto.form.InventoryInitForm;
-import com.codeager.ecom.dto.form.SpecificationInitForm;
-import com.codeager.ecom.service.ProductService;
-import com.codeager.ecom.service.SpecificationService;
-import com.codeager.ecom.service.StockKeepingUnitService;
-import com.codeager.portal.annotation.Authenticate;
-import com.codeager.portal.domain.Administrator;
+import io.codeager.ecom.controller.FormValidationException;
+import io.codeager.ecom.domain.Product;
+import io.codeager.ecom.domain.Specification;
+import io.codeager.ecom.domain.StockKeepingUnit;
+import io.codeager.ecom.dto.form.InventoryForm;
+import io.codeager.ecom.dto.form.InventoryInitForm;
+import io.codeager.ecom.dto.form.SpecificationInitForm;
+import io.codeager.ecom.service.ProductService;
+import io.codeager.ecom.service.SpecificationService;
+import io.codeager.ecom.service.StockKeepingUnitService;
+import io.codeager.portal.annotation.Authenticate;
+import io.codeager.portal.domain.Administrator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,10 +42,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static com.codeager.ecom.util.Routing.ADMIN_BASE;
-import static com.codeager.ecom.util.Routing.redirect;
-import static com.codeager.portal.Role.ADMIN;
-import static com.codeager.portal.Role.EDITOR;
+import static io.codeager.ecom.util.Routing.ADMIN_BASE;
+import static io.codeager.ecom.util.Routing.redirect;
+import static io.codeager.portal.Role.ADMIN;
+import static io.codeager.portal.Role.EDITOR;
 
 /**
  * @author Jiupeng Zhang

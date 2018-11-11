@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.controller;
+package io.codeager.ecom.controller;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
-import com.codeager.ecom.dto.view.$;
-import com.codeager.ecom.dto.view.ErrorView;
+import io.codeager.ecom.dto.view.$;
+import io.codeager.ecom.dto.view.ErrorView;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.slf4j.Logger;

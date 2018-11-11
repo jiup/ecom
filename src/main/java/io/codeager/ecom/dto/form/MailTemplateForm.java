@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.dto.form;
+package io.codeager.ecom.dto.form;
 
 import com.google.common.base.MoreObjects;
 import org.hibernate.validator.constraints.Length;

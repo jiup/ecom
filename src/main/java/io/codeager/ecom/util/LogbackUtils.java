@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.util;
+package io.codeager.ecom.util;
 
 import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.joran.JoranConfigurator;

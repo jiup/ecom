@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.dto.validator.annotation;
+package io.codeager.ecom.dto.validator.annotation;
 
-import com.codeager.ecom.dto.validator.NotEmptyFieldsValidator;
+import io.codeager.ecom.dto.validator.NotEmptyFieldsValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

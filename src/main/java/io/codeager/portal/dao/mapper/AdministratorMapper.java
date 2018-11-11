@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.codeager.portal.dao.mapper;
+package io.codeager.portal.dao.mapper;
 
-import com.codeager.portal.dao.type.RoleTypeHandler;
-import com.codeager.portal.domain.Administrator;
+import io.codeager.portal.dao.type.RoleTypeHandler;
+import io.codeager.portal.domain.Administrator;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
@@ -55,7 +55,7 @@ public interface AdministratorMapper {
 
     @Insert({
             "INSERT INTO t_administrator (LOGIN_NAME, PASSWORD, PW_SALT, ROLE, DISPLAY_NAME, EMAIL_ADDRESS, LOGIN_COUNT, LAST_LOGIN_IP, LAST_LOGIN_UA, LAST_LOGIN_TIME, CREATE_TIME, UPDATE_TIME)",
-            "VALUES (#{loginName}, #{password}, #{passwordSalt}, #{role,typeHandler=com.codeager.portal.dao.type.RoleTypeHandler}, #{displayName}, #{emailAddress}, #{loginCount}, " +
+            "VALUES (#{loginName}, #{password}, #{passwordSalt}, #{role,typeHandler=io.codeager.portal.dao.type.RoleTypeHandler}, #{displayName}, #{emailAddress}, #{loginCount}, " +
                     "#{lastLoginIp}, #{lastLoginUserAgent}, #{lastLoginTime}, #{createTime}, #{updateTime})"
     })
     void insert(Administrator administrator);
@@ -105,7 +105,7 @@ public interface AdministratorMapper {
             "LOGIN_NAME = #{loginName},",
             "PASSWORD = #{password},",
             "PW_SALT = #{passwordSalt},",
-            "ROLE = #{role,typeHandler=com.codeager.portal.dao.type.RoleTypeHandler},",
+            "ROLE = #{role,typeHandler=io.codeager.portal.dao.type.RoleTypeHandler},",
             "DISPLAY_NAME = #{displayName},",
             "EMAIL_ADDRESS = #{emailAddress},",
             "LOGIN_COUNT = #{loginCount},",

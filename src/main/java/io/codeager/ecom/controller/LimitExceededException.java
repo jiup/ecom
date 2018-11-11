@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.controller;
+package io.codeager.ecom.controller;
 
 import com.google.common.util.concurrent.RateLimiter;
 

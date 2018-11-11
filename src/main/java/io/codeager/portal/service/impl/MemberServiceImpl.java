@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.codeager.portal.service.impl;
+package io.codeager.portal.service.impl;
 
-import com.codeager.portal.service.MemberService;
+import io.codeager.portal.service.MemberService;
 import org.springframework.stereotype.Service;
 
 /**

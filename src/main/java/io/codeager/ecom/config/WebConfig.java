@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.config;
+package io.codeager.ecom.config;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.codeager.ecom.interceptor.AdminSessionInterceptor;
-import com.codeager.ecom.util.springfox.*;
-import com.codeager.portal.AuthenticationHandler;
-import com.codeager.portal.DefaultAuthenticationHandler;
-import com.codeager.portal.controller.UserResolver;
-import com.codeager.portal.interceptor.AuthenticationInterceptor;
+import io.codeager.ecom.interceptor.AdminSessionInterceptor;
+import io.codeager.ecom.util.springfox.*;
+import io.codeager.portal.AuthenticationHandler;
+import io.codeager.portal.DefaultAuthenticationHandler;
+import io.codeager.portal.controller.UserResolver;
+import io.codeager.portal.interceptor.AuthenticationInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
@@ -60,8 +60,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import java.util.List;
 import java.util.Locale;
 
-import static com.codeager.ecom.util.Routing.ADMIN_BASE;
-import static com.codeager.ecom.util.Routing.API_BASE;
+import static io.codeager.ecom.util.Routing.ADMIN_BASE;
+import static io.codeager.ecom.util.Routing.API_BASE;
 
 /**
  * Spring MVC Pointcut
@@ -76,8 +76,8 @@ import static com.codeager.ecom.util.Routing.API_BASE;
         springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration.class
 })
 @ComponentScan(basePackages = {
-        "com.codeager.*.controller",
-        "com.codeager.*.interceptor",
+        "io.codeager.*.controller",
+        "io.codeager.*.interceptor",
 })
 @PropertySource("classpath:/conf/springmvc.properties")
 @PropertySource("classpath:/conf/swagger.properties")

@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.controller.api;
+package io.codeager.ecom.controller.api;
 
-import com.codeager.ecom.dto.view.$;
-import com.codeager.ecom.dto.view.ResponseCode;
-import com.codeager.ecom.dto.view.RestResponse;
-import com.codeager.portal.AuthenticationException;
-import com.codeager.portal.TokenHoldException;
-import com.codeager.portal.domain.UserToken;
-import com.codeager.portal.service.UserTokenService;
+import io.codeager.ecom.dto.view.$;
+import io.codeager.ecom.dto.view.ResponseCode;
+import io.codeager.ecom.dto.view.RestResponse;
+import io.codeager.portal.AuthenticationException;
+import io.codeager.portal.TokenHoldException;
+import io.codeager.portal.domain.UserToken;
+import io.codeager.portal.service.UserTokenService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

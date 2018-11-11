@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.controller.api;
+package io.codeager.ecom.controller.api;
 
 import com.captcha.botdetect.web.servlet.Captcha;
 import com.google.common.util.concurrent.RateLimiter;
-import com.codeager.ecom.controller.LimitExceededException;
-import com.codeager.ecom.dto.form.ContactForm;
-import com.codeager.ecom.dto.form.QuoteRequestForm;
-import com.codeager.ecom.dto.view.$;
-import com.codeager.ecom.dto.view.ResponseCode;
-import com.codeager.ecom.dto.view.RestResponse;
-import com.codeager.ecom.util.BotDetectUtils;
-import com.codeager.ecom.util.Constant;
-import com.codeager.plugin.MailSender;
+import io.codeager.ecom.controller.LimitExceededException;
+import io.codeager.ecom.dto.form.ContactForm;
+import io.codeager.ecom.dto.form.QuoteRequestForm;
+import io.codeager.ecom.dto.view.$;
+import io.codeager.ecom.dto.view.ResponseCode;
+import io.codeager.ecom.dto.view.RestResponse;
+import io.codeager.ecom.util.BotDetectUtils;
+import io.codeager.ecom.util.Constant;
+import io.codeager.plugin.MailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -41,7 +41,7 @@ import javax.mail.SendFailedException;
 import javax.servlet.http.HttpServletRequest;
 import java.util.concurrent.TimeUnit;
 
-import static com.codeager.ecom.util.Routing.API_BASE;
+import static io.codeager.ecom.util.Routing.API_BASE;
 
 /**
  * @author Jiupeng Zhang

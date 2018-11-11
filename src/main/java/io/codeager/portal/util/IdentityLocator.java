@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.codeager.portal.util;
+package io.codeager.portal.util;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;

@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package com.codeager.plugin.impl;
+package io.codeager.plugin.impl;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import com.codeager.plugin.ImageUploader;
+import io.codeager.plugin.ImageUploader;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;

@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.codeager.plugin.impl;
+package io.codeager.plugin.impl;
 
-import com.codeager.plugin.MailSender;
+import io.codeager.plugin.MailSender;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;

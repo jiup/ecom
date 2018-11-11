@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.codeager.ecom.util;
+package io.codeager.ecom.util;
 
 /**
  * @author Jiupeng Zhang

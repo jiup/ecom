@@ -44,20 +44,20 @@
             </property>
         </bean>
 
-        <bean id="defaultMailSender" class="com.codeager.plugin.impl.DefaultMailSender">
+        <bean id="defaultMailSender" class="io.codeager.plugin.impl.DefaultMailSender">
             <property name="javaMailSender" ref="javaMailSender"/>
             <property name="from" value="${ecom.email.from}"/>
         </bean>
 
         <!-- Option II - Mailgun (API) -->
-        <!--<bean id="mailgunMailSender" class="com.codeager.plugin.mail.impl.MailgunMailSender">-->
+        <!--<bean id="mailgunMailSender" class="io.codeager.plugin.mail.impl.MailgunMailSender">-->
         <!--<property name="url" value="${ecom.email.mailgun.url}"/>-->
         <!--<property name="key" value="${ecom.email.mailgun.key}"/>-->
         <!--<property name="from" value="${ecom.email.from}"/>-->
         <!--</bean>-->
 
         <!-- Image Uploader -->
-        <bean id="pictshareImageUploader" class="com.codeager.plugin.impl.PictshareImageUploader"/>
+        <bean id="pictshareImageUploader" class="io.codeager.plugin.impl.PictshareImageUploader"/>
 
     </beans>
 </beans>
