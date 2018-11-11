@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="lang=${#locale.language}" th:lang="${lang}">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<!-- Main navbar -->
+<div class="navbar navbar-inverse navbar-fixed-top" th:fragment="topbar">
+    <div class="navbar-header">
+        <a class="navbar-brand" th:href="@{/admin/home}">
+            <img src="" th:src="@{/assets/images/logo_light.png}" alt="">
+        </a>
+
+        <ul class="nav navbar-nav visible-xs-block">
+            <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+            <li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
+        </ul>
+    </div>
+
+    <div class="navbar-collapse collapse" id="navbar-mobile">
+        <ul class="nav navbar-nav">
+            <li><a class="sidebar-control sidebar-main-hide hidden-xs"><i class="icon-lan3"></i></a></li>
+        </ul>
+
+        <p class="navbar-text"><span class="label bg-success-400">Online</span></p>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown" th:if="${session.user?.role?.code>=63}">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="icon-people"></i>
+                    <span class="visible-xs-inline-block position-right">Users</span>
+                </a>
+
+                <div class="dropdown-menu dropdown-content">
+                    <div class="dropdown-content-heading">users online - snapshot</div>
+
+                    <ul class="media-list dropdown-content-body width-300">
+                        <li class="media" th:each="item:${session.onlineAdminUsers}">
+                            <div class="media-left" th:switch="${item?.role?.code}">
+                                <img th:case="127" class="img-circle img-sm" src=""
+                                     th:src="@{/assets/images/user-default-gold.png}">
+                                <img th:case="63" class="img-circle img-sm" src=""
+                                     th:src="@{/assets/images/user-default-silver.png}">
+                                <img th:case="15" class="img-circle img-sm" src=""
+                                     th:src="@{/assets/images/user-default-bronze.png}">
+                            </div>
+                            <div class="media-body">
+                                <a class="media-heading text-semibold" th:text="${item?.displayName}"></a>
+                                <span class="display-block text-muted text-size-small"
+                                      th:text="${item?.role?.name}"></span>
+                            </div>
+                            <div class="media-right media-middle"><span class="status-mark border-success"></span></div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="dropdown dropdown-user">
+                <a class="dropdown-toggle" data-toggle="dropdown" th:object="${session.user}">
+                    <th:block th:switch="${session.user?.role?.code}">
+                        <img th:case="127" src="" th:src="@{/assets/images/user-default-gold.png}">
+                        <img th:case="63" src="" th:src="@{/assets/images/user-default-silver.png}">
+                        <img th:case="15" src="" th:src="@{/assets/images/user-default-bronze.png}">
+                    </th:block>
+                    <span th:text="${#strings.defaultString(session.user?.displayName,'Guest')}"></span>
+                    <i class="caret"></i>
+                </a>
+
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a th:href="@{/admin/account}"><i class="icon-cog5"></i> Account settings</a></li>
+                    <li><a th:href="@{/admin/account/record}"><i class="icon-history"></i> Login record</a></li>
+                    <li class="divider"></li>
+                    <li>
+                        <a onclick="document.getElementById('logout-form').submit()"><i class="icon-switch2"></i> Logout</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <form id="logout-form" th:action="@{/admin/logout}" method="post"></form>
+    </div>
+</div>
+<!-- /main navbar -->
+
+<!-- Main sidebar -->
+<div class="sidebar sidebar-main sidebar-fixed" th:fragment="sidebar(active)">
+    <div class="sidebar-content">
+        <!-- User menu -->
+        <div class="sidebar-user" th:if="${session.user!=null}">
+            <div class="category-content">
+                <div class="media">
+                    <span class="media-left">
+                    <th:block th:switch="${session.user?.role?.code}">
+                        <img th:case="127" src="" th:src="@{/assets/images/user-default-gold.png}"
+                             class="img-circle img-sm">
+                        <img th:case="63" src="" th:src="@{/assets/images/user-default-silver.png}"
+                             class="img-circle img-sm">
+                        <img th:case="15" src="" th:src="@{/assets/images/user-default-bronze.png}"
+                             class="img-circle img-sm">
+                    </th:block>
+                    </span>
+                    <div class="media-body">
+                        <span class="media-heading text-semibold" th:text="${session.user?.displayName}"></span>
+                        <div class="text-size-mini text-muted">
+                            <i class="icon-vcard text-size-small position-left"></i>
+                            <span th:text="${session.user?.role?.name}"></span>
+                        </div>
+                    </div>
+
+                    <div class="media-right media-middle">
+                        <ul class="icons-list">
+                            <li>
+                                <a th:href="@{/admin/account}"><i class="icon-cog3"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /user menu -->
+
+        <!-- Main navigation -->
+        <div class="sidebar-category sidebar-category-visible">
+            <div class="category-content no-padding">
+                <ul class="navigation navigation-main navigation-accordion">
+                    <!-- Main -->
+                    <li class="navigation-header">
+                        <span>MAIN</span> <i class="icon-menu" title="Main Functions"></i>
+                    </li>
+                    <li th:attr="class=${active.equals('Dashboard')?'active':''}">
+                        <a th:href="@{/admin/home}">
+                            <i class="icon-home4" style="width: 16px"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="has-ul">
+                            <i class="icon-users2" style="width: 16px"></i>
+                            <span>Customers</span>
+                        </a>
+                        <ul>
+                            <li th:attr="class=${active.equals('Potential Customers')?'active':''}">
+                                <a th:href="@{/admin/customer-ext}">Potential Customers</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-ul">
+                            <i class="icon-stack2" style="width: 16px"></i>
+                            <span>Mail Delivery</span>
+                        </a>
+                        <ul>
+                            <li th:attr="class=${active.equals('Contact Request')?'active':''}">
+                                <a th:href="@{/admin/contact}">Contact Request</a>
+                            </li>
+                            <li th:attr="class=${active.equals('Quote Request')?'active':''}">
+                                <a th:href="@{/admin/quote}">Quote Request</a>
+                            </li>
+                            <li th:attr="class=${active.equals('Mail Template')?'active':''}">
+                                <a th:href="@{/admin/mail-template}">Mail Template</a>
+                            </li>
+                            <li th:if="${session.user?.role?.code>=63}"
+                                th:attr="class=${active.equals('Mail Sender')?'active':''}">
+                                <a th:href="@{/admin/mail-sender}">Mail Sender</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-ul">
+                            <i class="icon-tree5" style="width: 16px"></i>
+                            <span>Categories</span>
+                        </a>
+                        <ul>
+                            <li th:if="${session.user?.role?.code>=63}"
+                                th:attr="class=${active.equals('Structure')?'active':''}">
+                                <a th:href="@{/admin/categories}">Structure</a>
+                            </li>
+                            <li th:attr="class=${active.equals('Specification Filter')?'active':''}">
+                                <a th:href="@{/admin/filter}">Specification Filter</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li th:attr="class=${active.equals('Products')?'active':''}">
+                        <a th:href="@{/admin/products}">
+                            <i class="icon-price-tags" style="width: 16px"></i>
+                            <span>Products</span>
+                        </a>
+                    </li>
+                    <li th:attr="class=${active.equals('Inventory')?'active':''}">
+                        <a th:href="@{/admin/inventory}">
+                            <i class="icon-cart5" style="width: 16px"></i>
+                            <span>Inventory</span>
+                        </a>
+                    </li>
+                    <li class="navigation-header">
+                        <span>SETTINGS</span> <i class="icon-menu" title="Main Functions"></i>
+                    </li>
+                    <li>
+                        <a class="has-ul">
+                            <i class="icon-user" style="width: 16px"></i>
+                            <span>My Account</span>
+                        </a>
+                        <ul>
+                            <li th:attr="class=${active.equals('Personal Info')?'active':''}">
+                                <a th:href="@{/admin/account}">Personal Info</a>
+                            </li>
+                            <li th:attr="class=${active.equals('Change Password')?'active':''}">
+                                <a th:href="@{/admin/account/password}">Change Password</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li th:attr="class=${active.equals('Accounts')?'active':''}"
+                        th:if="${session.user?.role?.code>=63}">
+                        <a th:href="@{/admin/accounts}">
+                            <i class="icon-collaboration" style="width: 16px"></i>
+                            <span>Accounts</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- /main navigation -->
+    </div>
+</div>
+<!-- /main sidebar -->
+
+</body>
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="lang=${#locale.language}" th:lang="${lang}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="#{page.title.inventory-specs}">Specifications - Ecom Backend System</title>
+
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet"
+          type="text/css">
+    <link th:href="@{/assets/css/icons/icomoon/styles.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/core.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/components.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/colors.min.css}" rel="stylesheet" type="text/css">
+    <!-- /global stylesheets -->
+
+    <!-- Core JS files -->
+    <script type="text/javascript" th:src="@{/assets/js/plugins/loaders/pace.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/core/libraries/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/core/libraries/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/loaders/blockui.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/ui/nicescroll.min.js}"></script>
+    <!-- /core JS files -->
+
+    <!-- Theme JS files -->
+    <script type="text/javascript" th:src="@{/assets/js/plugins/forms/selects/select2.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/editors/summernote/summernote.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/forms/styling/uniform.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/core/app.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/nicescroll.activator.js}"></script>
+    <!-- /theme JS files -->
+
+    <script>
+        $(function () {
+            var params = (new URL(document.location)).searchParams;
+            var resp = params && params.get("resp");
+            if (resp) {
+                alert(unescape(resp));
+            }
+        })
+
+        $(function () {
+            // Default initialization
+            $("input[type='checkbox']").uniform({
+                radioClass: 'choice'
+            });
+        });
+
+        function checkAll(switcher) {
+            if ($(switcher).parent().parent().parent().parent().is("th")) {
+                $("input[name='ids']").prop("checked", switcher.checked)
+                $.uniform.update("input[name='ids']");
+            } else {
+                return false;
+            }
+        }
+
+        function initForm() {
+            if ($("#specName").length > 0) {
+                var defaultUom = $("#specName option:first").attr("uom");
+                if (defaultUom) {
+                    $("#uom").val(defaultUom);
+                } else {
+                    $("#uom").val("");
+                }
+                $("#uom").prop("readonly", true);
+
+                $("select").each(function (i, dom) {
+                    var $select = $(dom);
+                    var selectName = $select.attr("t_name");
+                    if (selectName) {
+                        $select.attr("name", selectName).removeAttr("t_name");
+                    }
+                });
+                $("select").show();
+                $("#tempEle").remove();
+            }
+        }
+
+        function replaceToTextInput(selectEle) {
+            var $selectEle = $(selectEle);
+            var selectName = $selectEle.attr("name");
+            $selectEle.attr("t_name", selectName).removeAttr("name");
+            $selectEle.find("option:selected").removeAttr("selected");
+            $selectEle.hide().after("<input id='tempEle' name='" + selectName + "' type='text' class='form-control' required>");
+
+            $("#uom").val("");
+            $("#uom").prop("readonly", false);
+        }
+
+        function linkValues(selectEle) {
+            var $selectEle = $(selectEle);
+            var selectUom = $selectEle.find("option:selected").attr("uom");
+            $("#uom").val(selectUom);
+            $("#uom").prop("readonly", true);
+        }
+    </script>
+</head>
+
+<body class="navbar-top">
+
+<!-- Main navbar -->
+<th:block th:replace="fragments/navbar::topbar"></th:block>
+<!-- /main navbar -->
+
+
+<!-- Page container -->
+<div class="page-container">
+
+    <!-- Page content -->
+    <div class="page-content">
+
+        <!-- Main sidebar -->
+        <th:block th:replace="fragments/navbar::sidebar('Inventory')"></th:block>
+        <!-- /main sidebar -->
+
+
+        <!-- Main content -->
+        <div class="content-wrapper">
+
+            <!-- Page header -->
+            <div class="page-header">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Inventory</span>
+                            -
+                            Specifications</h4>
+                    </div>
+                </div>
+
+                <div class="breadcrumb-line">
+                    <ul class="breadcrumb">
+                        <li><a th:href="@{/admin/home}"><i class="icon-home2 position-left"></i> Home</a></li>
+                        <li><a th:href="@{/admin/inventory}+'?spu='+${sku.getProductId()}">Inventory</a></li>
+                        <li class="active">Specifications</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /page header -->
+
+
+            <!-- Content area -->
+            <div class="content">
+                <div class="panel panel-flat">
+                    <!--<div class="heading-elements">-->
+                    <!--<ul class="icons-list">-->
+                    <!--<li><a data-action="collapse"></a></li>-->
+                    <!--<li><a data-action="close"></a></li>-->
+                    <!--</ul>-->
+                    <!--</div>-->
+                    <div class="panel-heading">
+                        <h6 class="panel-title">
+                            <label class="label label-flat border-grey text-grey-600 position-left" th:text="|SKU#${''.equals(sku.getSerialNumber())?sku.getId():sku.getSerialNumber()}|" style="margin-bottom: 0"></label>
+                            <strong th:text="${product.getProductName()}"></strong>
+                        </h6>
+                        <div class="heading-elements">
+                            <div class="heading-btn">
+                                <button onclick="initForm()" type="button" class="btn btn-default dropdown-toggle" data-toggle="modal" data-target="#modal_form_horizontal">
+                                    <i class="icon-plus2 position-left"></i>Add Record
+                                </button>
+                            </div>
+                            <div class="heading-btn">
+                                <a href="./specs" type="button" class="btn btn-info">
+                                    <i class="icon-reload-alt position-left"></i>Refresh Page
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="DataTables_Table_2_wrapper" class="dataTables_wrapper no-footer">
+                        <div>
+                            <form id="tableForm" method="post">
+                                <table class="table table-xs table-hover table-striped dataTable no-footer" role="grid">
+                                    <thead>
+                                    <tr role="row">
+                                        <!--<th tabindex="0" rowspan="1" colspan="1">-->
+                                            <!--<label>-->
+                                                <!--<input type="checkbox" class="styled checkAllButton"-->
+                                                       <!--onchange="checkAll(this)">-->
+                                            <!--</label>-->
+                                        <!--</th>-->
+                                        <th tabindex="0" rowspan="1" colspan="1">Name
+                                        </th>
+                                        <th tabindex="0" rowspan="1" colspan="1">Value
+                                        </th>
+                                        <th tabindex="0" rowspan="1" colspan="1">UOM
+                                        </th>
+                                        <th tabindex="0" rowspan="1" colspan="1">Grouped
+                                        </th>
+                                        <th class="text-center" rowspan="1" colspan="1"
+                                            aria-label="Actions" style="width: 100px;">Actions
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr role="row" th:each="item:${page}">
+                                        <!--<td>-->
+                                            <!--<label>-->
+                                                <!--<input name="ids" th:value="${item.getId()}" type="checkbox"-->
+                                                       <!--class="styled">-->
+                                            <!--</label>-->
+                                        <!--</td>-->
+                                        <td th:text="${item.getName()}"></td>
+                                        <td th:text="${item.getValue()}"></td>
+                                        <td th:text="${''.equals(item.getUnitsOfMeasurement())?'-':item.getUnitsOfMeasurement()}"></td>
+                                        <td th:text="${item.isGrouped()?'Yes':'No'}"></td>
+                                        <td class="text-center">
+                                            <a class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to delete this item?')" th:href="'./specs/'+${item.getId()}+'/delete'"><i class="icon-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                        <div class="datatable-footer">
+                            <div class="dataTables_info" id="DataTables_Table_2_info" role="status" aria-live="polite"
+                                 th:text="|Found ${page.getTotal()} entries|">
+                            </div>
+                            <a th:href="'../../inventory?spu='+${sku.getProductId()}" class="btn btn-default" style="float: right">
+                                <i class="icon-arrow-left13 position-left"></i>Back
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /content area --><!-- Horizontal form modal -->
+            <div id="modal_form_horizontal" class="modal fade">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 id="multi_func_form_title" class="modal-title"><i
+                                    class="icon-file-plus2 position-left"></i>Add Specification</h4>
+                        </div>
+
+                        <form id="multi_func_form" action="./specs/add" method="post" class="form-horizontal">
+                            <div class="modal-body">
+
+                                <div class="form-group" th:if="${options.size()==0}">
+                                    <label class="control-label col-sm-3">Name</label>
+                                    <div class="col-sm-9">
+                                        <input name="name" type="text" min="0" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" th:if="${options.size()>0}">
+                                    <label class="control-label col-sm-3">Name</label>
+                                    <div class="col-sm-9">
+                                        <select id="specName" name="name" class="form-control"
+                                                onchange="linkValues(this); if (this[selectedIndex].innerHTML == 'Other') {replaceToTextInput(this)}" required>
+                                            <option th:each="opt:${options}" th:text="${opt.getName()}" th:value="${opt.getName()}"  th:attr="uom=${opt.getUnitsOfMeasurement()}"></option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Value</label>
+                                    <div class="col-sm-9">
+                                        <input name="value" type="text" min="0" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">UOM</label>
+                                    <div class="col-sm-9">
+                                        <input id="uom" name="uom" type="text" min="0" placeholder="-" class="form-control" th:readonly="${options.size()>0}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" id="modalCloseBtn" class="btn btn-link" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- /horizontal form modal -->
+
+        </div>
+        <!-- /main content -->
+
+    </div>
+    <!-- /page content -->
+
+</div>
+<!-- /page container -->
+
+</body>
+</html>

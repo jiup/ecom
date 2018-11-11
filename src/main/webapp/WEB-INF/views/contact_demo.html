@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="lang=${#locale.language}" th:lang="${lang}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contact Form Demo</title>
+    <script th:src="@{/captcha/include.js}"></script>
+</head>
+<body>
+<form th:action="@{/api/v1/contact}" method="post">
+    <table>
+        <tr>
+            <td>First Name*</td>
+            <td><input name="firstName" type="text" required><br/></td>
+        </tr>
+        <tr>
+            <td>Last Name</td>
+            <td><input name="lastName" type="text"></td>
+        </tr>
+        <tr>
+            <td>Email*</td>
+            <td><input name="email" type="text" required></td>
+        </tr>
+        <!--<tr>-->
+            <!--<td>Subject*</td>-->
+            <!--<td><input name="subject" type="text" required></td>-->
+        <!--</tr>-->
+        <tr>
+            <td>Message*</td>
+            <td><input name="message" type="text" required></td>
+        </tr>
+        <tr>
+            <td>Captcha*</td>
+            <td><input name="captcha" type="text" required></td>
+        </tr>
+    </table>
+    <div th:utext="${captchaHtml}"></div>
+    <input type="submit">
+</form>
+</body>
+</html>

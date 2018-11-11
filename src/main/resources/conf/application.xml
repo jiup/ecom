@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+    <beans default-lazy-init="false">
+        <context:property-placeholder location="classpath:/conf/datasource.properties"/>
+        <context:property-placeholder location="classpath:ecom.properties"/>
+
+        <!-- HikariCP configuration -->
+        <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+            <property name="poolName" value="Hikari Connection Pool"/>
+            <property name="driverClassName" value="${datasource.driver}"/>
+            <property name="jdbcUrl" value="${datasource.url}"/>
+            <property name="username" value="${datasource.username}"/>
+            <property name="password" value="${datasource.password}"/>
+            <property name="autoCommit" value="true"/>
+            <property name="connectionTimeout" value="30000"/>
+            <property name="idleTimeout" value="600000"/>
+            <property name="maxLifetime" value="1800000"/>
+            <property name="maximumPoolSize" value="100"/>
+            <property name="transactionIsolation" value="TRANSACTION_REPEATABLE_READ"/>
+            <property name="validationTimeout" value="5000"/>
+            <property name="connectionTestQuery" value="SELECT 1"/>
+        </bean>
+
+        <!-- Option I - Java Mail (SMTP) -->
+        <bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+            <property name="protocol" value="smtp"/>
+            <property name="host" value="${ecom.email.smtp.host}"/>
+            <property name="port" value="${ecom.email.smtp.port}"/>
+            <property name="username" value="${ecom.email.smtp.username}"/>
+            <property name="password" value="${ecom.email.smtp.password}"/>
+            <property name="javaMailProperties">
+                <props>
+                    <prop key="mail.smtp.auth">true</prop>
+                    <prop key="mail.smtp.ssl.enable">true</prop>
+                    <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+                </props>
+            </property>
+        </bean>
+
+        <bean id="defaultMailSender" class="com.codeager.plugin.impl.DefaultMailSender">
+            <property name="javaMailSender" ref="javaMailSender"/>
+            <property name="from" value="${ecom.email.from}"/>
+        </bean>
+
+        <!-- Option II - Mailgun (API) -->
+        <!--<bean id="mailgunMailSender" class="com.codeager.plugin.mail.impl.MailgunMailSender">-->
+        <!--<property name="url" value="${ecom.email.mailgun.url}"/>-->
+        <!--<property name="key" value="${ecom.email.mailgun.key}"/>-->
+        <!--<property name="from" value="${ecom.email.from}"/>-->
+        <!--</bean>-->
+
+        <!-- Image Uploader -->
+        <bean id="pictshareImageUploader" class="com.codeager.plugin.impl.PictshareImageUploader"/>
+
+    </beans>
+</beans>

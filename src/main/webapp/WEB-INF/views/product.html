@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="lang=${#locale.language}" th:lang="${lang}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="#{page.title.product}">Product Edit - Ecom Backend System</title>
+
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet"
+          type="text/css">
+    <link th:href="@{/assets/css/icons/icomoon/styles.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/core.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/components.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/colors.min.css}" rel="stylesheet" type="text/css">
+    <!-- /global stylesheets -->
+
+    <!-- Core JS files -->
+    <script type="text/javascript" th:src="@{/assets/js/plugins/loaders/pace.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/core/libraries/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/core/libraries/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/loaders/blockui.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/ui/nicescroll.min.js}"></script>
+    <!-- /core JS files -->
+
+    <!-- Theme JS files -->
+    <script type="text/javascript" th:src="@{/assets/js/plugins/forms/selects/select2.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/editors/summernote/summernote.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/forms/styling/uniform.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/core/app.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/nicescroll.activator.js}"></script>
+    <!-- /theme JS files -->
+
+    <script>
+        $(function () {
+            var params = (new URL(document.location)).searchParams;
+            var resp = params && params.get("resp");
+            if (resp) {
+                alert(unescape(resp));
+            }
+        })
+    </script>
+</head>
+
+<body class="navbar-top">
+
+<!-- Main navbar -->
+<th:block th:replace="fragments/navbar::topbar"></th:block>
+<!-- /main navbar -->
+
+
+<!-- Page container -->
+<div class="page-container">
+
+    <!-- Page content -->
+    <div class="page-content">
+
+        <!-- Main sidebar -->
+        <th:block th:replace="fragments/navbar::sidebar('Products')"></th:block>
+        <!-- /main sidebar -->
+
+
+        <!-- Main content -->
+        <div class="content-wrapper">
+
+            <!-- Page header -->
+            <div class="page-header">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Products</span>
+                            -
+                            Product Edit</h4>
+                    </div>
+                </div>
+
+                <div class="breadcrumb-line">
+                    <ul class="breadcrumb">
+                        <li><a th:href="@{/admin/home}"><i class="icon-home2 position-left"></i> Home</a></li>
+                        <li><a th:href="@{/admin/products}">Products</a></li>
+                        <li class="active">Product Edit</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /page header -->
+
+
+            <!-- Content area -->
+            <div class="content">
+
+                <!-- Input group addons -->
+                <div class="panel panel-flat">
+
+                    <div class="panel-body">
+                        <form method="post" id="productForm" class="form-horizontal">
+                            <fieldset class="content-group">
+                                <legend class="text-bold">
+                                    <!--<strong>Basic Info</strong>-->
+                                    <strong>Product Info</strong>
+                                </legend>
+
+                                <div class="form-group">
+                                    <label class="control-label col-lg-2">SPU#</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" th:value="${product.getId()}"
+                                               class="form-control" style="cursor: default;" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-lg-2">Product Category</label>
+                                    <div class="col-lg-10">
+                                        <select name="categoryId" class="form-control">
+                                            <option value="0">-</option>
+                                            <option th:each="category:${categories}" th:value="${category.getId()}" th:text="${category.getPath()}" th:selected="${product.getCategoryId()==category.getId()}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-lg-2">Product Name</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" name="productName" th:value="${product.getProductName()}"
+                                               class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-lg-2">Overview</label>
+                                    <div class="col-lg-10">
+                                        <textarea name="overview"
+                                                  placeholder="A brief description of product, will show in product lists."
+                                                  rows="5" style="resize:vertical"
+                                                  class="form-control" th:text="${product.getOverview()}"></textarea>
+                                    </div>
+                                </div>
+                                <!--</fieldset>-->
+
+                                <!--<fieldset class="content-group">-->
+                                <!--<legend class="text-bold">-->
+                                <!--<strong>Images</strong>-->
+                                <!--</legend>-->
+
+                                <div class="form-group">
+                                    <label class="control-label col-lg-2">Main Image</label>
+                                    <div class="col-md-10">
+                                        <div class="thumbnail" style="width: 308px; height: 208px;">
+                                            <div class="thumb"
+                                                 style="width: 300px; height: 200px; line-height: 200px;">
+                                                <img th:src="${mainImage.getImageUrl()}"
+                                                     src="https://static.codeager.com/q2g7rd13pu.png"
+                                                     style="max-width: 300px; max-height: 200px; margin: 0 auto" alt="not set yet">
+                                                <div class="caption-overflow" style="line-height: 0;">
+                                                    <span>
+                                                        <a onclick="$('#mainImageFile').trigger('click')" class="btn btn-info btn-sm">Replace</a>
+                                                        <a th:href="${product.getId()}+'/image/'+${mainImage.getId()}+'/reset'" class="btn btn-danger btn-sm">Reset</a>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-lg-2">Sub Images</label>
+                                    <div class="col-md-10">
+                                        <div class="thumbnail" th:each="subImage:${subImages}"
+                                             style="width: 128px; height: 88px; margin-right: 18px; display: inline-block">
+                                            <div class="thumb"
+                                                 style="width: 120px; height: 80px; line-height: 80px;">
+                                                <img th:src="${subImage.getImageUrl()}"
+                                                     src="https://static.codeager.com/q2g7rd13pu.png"
+                                                     style="max-width: 120px; max-height: 80px; margin: 0 auto">
+                                                <div class="caption-overflow" style="line-height: 0;">
+                                                    <span>
+                                                        <a th:href="${product.getId()}+'/image/'+${subImage.getId()}+'/delete'" class="btn btn-danger btn-sm">Delete</a>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <button type="button" onclick="$('#subImageFile').trigger('click')" class="btn btn-default"
+                                                style="width: 128px; height: 88px; border-style: dashed">
+                                            <i class="icon-plus2 position-left"></i>Add Image
+                                        </button>
+
+                                        <span class="help-block">Only accept PNG or JPG (size < 2MB)</span>
+                                    </div>
+                                </div>
+                                <!--</fieldset>-->
+
+                                <!--<fieldset class="content-group">-->
+                                <!--<legend class="text-bold">-->
+                                <!--<strong>Details</strong>-->
+                                <!--</legend>-->
+
+                                <div class="form-group">
+                                    <label class="control-label col-lg-2">Product Details</label>
+                                    <div class="col-lg-10">
+                                        <div class="tabbable">
+                                            <ul class="nav nav-pills">
+                                                <li th:class="${detail.iskVPairs()?'active':''}" onclick="detailsPanel(true)"><a href="#basic-tab1" data-toggle="tab"><i class="icon-menu4 position-left"></i>Accordion</a></li>
+                                                <li th:class="${detail.iskVPairs()?'':'active'}" onclick="detailsPanel(false)"><a href="#basic-tab2" data-toggle="tab"><i class="icon-infinite position-left"></i>Rich Text</a></li>
+                                            </ul>
+
+                                            <div class="tab-content">
+                                                <div class="tab-pane" th:classappend="${detail.iskVPairs()?'active':''}" id="basic-tab1">
+                                                    <textarea th:attr="name=${detail.iskVPairs()?'details':null}"
+                                                              placeholder="Some details (features, performance data, setup requirements, manufacturers, etc.) to help customers understand the product."
+                                                              rows="18" style="resize:vertical"
+                                                              class="form-control" th:text="${detail.getContent()}"></textarea>
+                                                    <span class="help-block">please add '#' before keywords and with its value followed in new lines.</span>
+                                                </div>
+
+                                                <div class="tab-pane" th:classappend="${detail.iskVPairs()?'':'active'}" id="basic-tab2">
+                                                    <textarea th:attr="name=${!detail.iskVPairs()?'details':null}" class="summernote" th:text="${detail.getContent()}"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input id="richTextCheckbox" style="display: none" name="richText" type="checkbox" th:checked="${!detail.iskVPairs()}">
+                                    </div>
+                                </div>
+                                <!--</fieldset>-->
+
+                                <!--<fieldset class="content-group">-->
+                                <!--<legend class="text-bold">-->
+                                <!--<strong>Other Parameters</strong>-->
+                                <!--</legend>-->
+
+                                <div class="form-group">
+                                    <label class="control-label col-lg-2">Sort Index (ASC)</label>
+                                    <div class="col-lg-10">
+                                        <input name="sortIndex" type="number" min="0"
+                                               th:value="${product.getSortIndex()}" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-lg-2">Notes</label>
+                                    <div class="col-lg-10">
+                                        <textarea name="notes"
+                                                  placeholder="Undefined"
+                                                  rows="3" style="resize:vertical"
+                                                  class="form-control" th:text="${product.getAdminNote()}"></textarea>
+                                        <span class="help-block">This field is only visible in the backend system.</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-lg-2">FE Display Status</label>
+                                    <div class="col-lg-10">
+                                        <a th:href="${product.getId()}+'/toggleDisplayStatus'" th:if="${!product.isDeleted()}" title="Toggle Status"
+                                              class="label bg-success help-inline">ONLINE</a>
+                                        <a th:href="${product.getId()}+'/toggleDisplayStatus'" th:if="${product.isDeleted()}" title="Toggle Status"
+                                              class="label bg-grey help-inline">OFFLINE</a>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <div class="text-right">
+                                <div class="button-group">
+                                    <a href="../products" class="btn btn-default"
+                                       onclick="return confirm('You will lose all changes (if any), are you sure?');">
+                                        <i class="icon-arrow-left13 position-left"></i>Back
+                                    </a>
+                                    <a th:href="'../inventory?spu='+${product.getId()}" class="btn bg-orange-700"
+                                       onclick="return confirm('Leave this page?');">
+                                        <i class="icon-cart5 position-left"></i>Inventory Management
+                                    </a>
+                                    <button type="submit" class="btn bg-teal"><i
+                                            class="icon-floppy-disk position-left"></i>Save &amp; Update
+                                    </button>
+                                    <span class="help-block" th:text="'Last modified: '+${#temporals.format(product.getUpdateTime(), 'MM/dd HH:mm:ss')}"></span>
+                                </div>
+                            </div>
+                        </form>
+                        <form id="replaceMainImageForm" method="post" enctype="multipart/form-data" th:action="${product.getId()}+'/image/'+${mainImage.getId()}+'/replace'">
+                            <input id="mainImageFile" name="imageFile" type="file" onchange="replaceMainImage()" style="display: none;"/>
+                        </form>
+                        <form id="addSubImageForm" method="post" enctype="multipart/form-data" th:action="${product.getId()}+'/image/add'">
+                            <input id="subImageFile" name="imageFile" type="file" onchange="addSubImage()" style="display: none;"/>
+                        </form>
+                    </div>
+                </div>
+                <!-- /input group addons -->
+            </div>
+            <!-- /content area -->
+
+        </div>
+        <!-- /main content -->
+
+    </div>
+    <!-- /page content -->
+
+</div>
+<!-- /page container -->
+<script>
+    $(function() {
+        // Default initialization
+        $('.summernote').summernote();
+
+        // Related form components
+        // ------------------------------
+
+        // Styled checkboxes/radios
+        $(".note-modal-form input[type=checkbox], .note-modal-form input[type=radio]").uniform({
+            radioClass: 'choice'
+        });
+
+
+        // Styled file input
+        $(".note-image-input").uniform({
+            wrapperClass: 'bg-blue',
+            fileButtonHtml: '<i class="icon-googleplus5"></i>'
+        });
+
+        $("#productForm").attr("action", window.location.pathname + "/update");
+    });
+
+    function replaceMainImage() {
+        $("#replaceMainImageForm").submit();
+    }
+
+    function addSubImage() {
+        $("#addSubImageForm").submit();
+    }
+
+    function detailsPanel(kVPairs) {
+        if (kVPairs) {
+            $("#basic-tab1 textarea").attr("name", "details");
+            $("#basic-tab2 textarea").removeAttr("name");
+            $("#richTextCheckbox").prop("checked", false);
+        } else {
+            $("#basic-tab1 textarea").removeAttr("name");
+            $("#basic-tab2 textarea").attr("name", "details");
+            $("#richTextCheckbox").prop("checked", true);
+        }
+    }
+</script>
+
+</body>
+</html>

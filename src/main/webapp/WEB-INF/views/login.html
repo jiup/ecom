@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="lang=${#locale.language}" th:lang="${lang}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="#{page.title.login}">Login - Ecom Backend System</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet"
+          type="text/css">
+    <link th:href="@{/assets/css/icons/icomoon/styles.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/core.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/components.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/colors.min.css}" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" th:src="@{/assets/js/plugins/loaders/pace.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/core/libraries/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/core/libraries/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/loaders/blockui.min.js}"></script>
+
+    <script type="text/javascript" th:src="@{/assets/js/core/app.js}"></script>
+    <script>
+        $(function () {
+            var params = (new URL(document.location)).searchParams;
+            var forwardUrl = params && params.get("forward");
+            var resp = params && params.get("resp");
+            if (resp) {
+                alert(unescape(resp));
+            }
+            return forwardUrl && $("form[name='adminLogin']").append($("<input name='forward' type='hidden' value=" + forwardUrl + ">"));
+        })
+    </script>
+
+</head>
+
+<body>
+
+<div class="navbar navbar-inverse">
+    <div class="navbar-header">
+        <a class="navbar-brand" th:href="@{/admin/home}"><img th:src="@{/assets/images/logo_light.png}" alt=""></a>
+
+        <ul class="nav navbar-nav pull-right visible-xs-block">
+            <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+        </ul>
+    </div>
+
+    <div class="navbar-collapse collapse" id="navbar-mobile">
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="https://www.codeager.com/login.html">
+                    <i class="icon-theater"></i> <span
+                        class="visible-xs-inline-block position-right"> Switch identity</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="page-container login-container">
+
+    <div class="page-content">
+
+        <div class="content-wrapper">
+
+            <div class="content">
+
+                <form name="adminLogin" action="#" th:action="@{/admin/login}" method="post">
+                    <div class="panel panel-body login-form">
+                        <div class="text-center">
+                            <div class="icon-object border-slate-300 text-slate-300"><i class="icon-reading"></i></div>
+                            <h5 class="content-group"><span
+                                    th:text="#{page.login.title}">Login to your account</span>
+                                <small class="display-block" th:text="#{page.login.subtitle}">Enter your
+                                    credentials
+                                    below
+                                </small>
+                            </h5>
+                        </div>
+
+                        <div class="form-group has-feedback has-feedback-left">
+                            <input type="text" class="form-control" name="username"
+                                   th:placeholder="#{username}">
+                            <div class="form-control-feedback">
+                                <i class="icon-user text-muted"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-group has-feedback has-feedback-left">
+                            <input type="password" class="form-control" name="password"
+                                   th:placeholder="#{password}">
+                            <div class="form-control-feedback">
+                                <i class="icon-lock2 text-muted"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block"><span
+                                    th:text="#{login}">Sign in</span> <i
+                                    class="icon-circle-right2 position-right"></i>
+                            </button>
+                        </div>
+
+                        <!--<div class="text-center">-->
+                        <!--<a href="#" th:text="#{forgot-password}">Forgot password?</a>-->
+                        <!--</div>-->
+                    </div>
+                </form>
+
+
+                <!--<div class="footer text-muted">-->
+                    <!--© 2018. <a href="#">Codeager IO</a>, theme by <a-->
+                        <!--href="http://themeforest.net/user/Kopyov" target="_blank">Eugene Kopyov</a>-->
+                <!--</div>-->
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

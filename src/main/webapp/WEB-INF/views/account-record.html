@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="lang=${#locale.language}" th:lang="${lang}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="#{page.title.account-psw}">Login Record - Ecom Backend System</title>
+
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet"
+          type="text/css">
+    <link th:href="@{/assets/css/icons/icomoon/styles.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/core.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/components.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/colors.min.css}" rel="stylesheet" type="text/css">
+    <!-- /global stylesheets -->
+
+    <!-- Core JS files -->
+    <script type="text/javascript" th:src="@{/assets/js/plugins/loaders/pace.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/core/libraries/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/core/libraries/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/loaders/blockui.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/ui/nicescroll.min.js}"></script>
+    <!-- /core JS files -->
+
+    <!-- Theme JS files -->
+    <script type="text/javascript" th:src="@{/assets/js/plugins/forms/styling/switchery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/forms/styling/uniform.min.js}"></script>
+
+    <script type="text/javascript" th:src="@{/assets/js/core/app.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/nicescroll.activator.js}"></script>
+    <!-- /theme JS files -->
+
+    <script>
+        $(function() {
+            var params = (new URL(document.location)).searchParams;
+            var resp = params && params.get("resp");
+            if (resp) {
+                alert(unescape(resp));
+            }
+        })
+    </script>
+
+    <style>
+        .form-group {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body class="navbar-top">
+
+<!-- Main navbar -->
+<th:block th:replace="fragments/navbar::topbar"></th:block>
+<!-- /main navbar -->
+
+
+<!-- Page container -->
+<div class="page-container">
+
+    <!-- Page content -->
+    <div class="page-content">
+
+        <!-- Main sidebar -->
+        <th:block th:replace="fragments/navbar::sidebar('Personal Info')"></th:block>
+        <!-- /main sidebar -->
+
+
+        <!-- Main content -->
+        <div class="content-wrapper">
+
+            <!-- Page header -->
+            <div class="page-header">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">My Account</span> -
+                            Login Record</h4>
+                    </div>
+                </div>
+
+                <div class="breadcrumb-line">
+                    <ul class="breadcrumb">
+                        <li><a th:href="@{/admin/home}"><i class="icon-home2 position-left"></i> Home</a></li>
+                        <li><a th:href="@{/admin/account}">My Account</a></li>
+                        <li class="active">Login Record</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /page header -->
+
+
+            <!-- Content area -->
+            <div class="content">
+                        <form class="form-horizontal" th:object="${administrator}">
+                            <div class="form-group" th:if="${browser}">
+                                <label class="control-label col-sm-2">Your browser</label>
+                                <label class="control-label col-sm-10" th:text="${browser}"></label>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Your current IP</label>
+                                <label class="control-label col-sm-10" th:text="*{lastLoginIp}"></label>
+                            </div>
+                            <div class="form-group" th:if="${city}">
+                                <label class="control-label col-sm-2">Your Possible location</label>
+                                <label class="control-label col-sm-10" th:text="${city}"></label>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Account create time</label>
+                                <label class="control-label col-sm-10" th:text="*{#temporals.format(createTime, 'MM/dd HH:mm:ss')}"></label>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Last modify time</label>
+                                <label class="control-label col-sm-10" th:text="*{#temporals.format(updateTime, 'MM/dd HH:mm:ss')}"></label>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Last login time</label>
+                                <label class="control-label col-sm-10" th:text="*{#temporals.format(lastLoginTime, 'MM/dd HH:mm:ss')}"></label>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Total login count</label>
+                                <label class="control-label col-sm-10" th:text="*{loginCount}"></label>
+                            </div>
+
+                            <div>
+                                <br/>
+                                <div class="button-group">
+                                    <a onclick="history.go(-1)" type="submit" class="btn btn-default">
+                                        <i class="icon-arrow-left13 position-left"></i>Back
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+            </div>
+            <!-- /content area -->
+
+        </div>
+        <!-- /main content -->
+
+    </div>
+    <!-- /page content -->
+
+</div>
+<!-- /page container -->
+
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="lang=${#locale.language}" th:lang="${lang}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="#{page.title.template}">Mail Template - Ecom Backend System</title>
+
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet"
+          type="text/css">
+    <link th:href="@{/assets/css/icons/icomoon/styles.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/core.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/components.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/colors.min.css}" rel="stylesheet" type="text/css">
+    <!-- /global stylesheets -->
+
+    <!-- Core JS files -->
+    <script type="text/javascript" th:src="@{/assets/js/plugins/loaders/pace.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/core/libraries/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/core/libraries/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/loaders/blockui.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/ui/nicescroll.min.js}"></script>
+    <!-- /core JS files -->
+
+    <!-- Theme JS files -->
+    <script type="text/javascript" th:src="@{/assets/js/plugins/tables/datatables/datatables.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/forms/selects/select2.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/editors/summernote/summernote.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/forms/styling/uniform.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/forms/styling/switch.min.js}"></script>
+
+    <script type="text/javascript" th:src="@{/assets/js/core/app.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/nicescroll.activator.js}"></script>
+    <!-- /theme JS files -->
+
+    <script>
+        $(function() {
+            // Default file input style
+            $(".file-styled").uniform({
+                fileButtonHtml: '<i class="icon-plus2"></i>'
+            });
+
+            // Default initialization
+            $(".styled, .multiselect-container input").uniform({
+                radioClass: 'choice'
+            });
+
+            // Styled checkboxes/radios
+            $(".note-modal-form input[type=checkbox], .note-modal-form input[type=radio]").uniform({
+                radioClass: 'choice'
+            });
+
+            // Styled file input
+            $(".note-image-input").uniform({
+                wrapperClass: 'bg-blue',
+                fileButtonHtml: '<i class="icon-googleplus5"></i>'
+            });
+
+            $(".switch").bootstrapSwitch();
+        });
+
+        function resizeIframe(obj) {
+            obj.style.height = obj.contentWindow.document.body.scrollHeight + 4 + 'px';
+            obj.style.background = "white !important";
+        }
+    </script>
+</head>
+
+<body class="navbar-top">
+
+<!-- Main navbar -->
+<th:block th:replace="fragments/navbar::topbar"></th:block>
+<!-- /main navbar -->
+
+
+<!-- Page container -->
+<div class="page-container">
+
+    <!-- Page content -->
+    <div class="page-content">
+
+        <!-- Main sidebar -->
+        <th:block th:replace="fragments/navbar::sidebar('Mail Template')"></th:block>
+        <!-- /main sidebar -->
+
+
+        <!-- Main content -->
+        <div class="content-wrapper">
+
+            <!-- Page header -->
+            <div class="page-header">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Home</span> -
+                            Mail Template</h4>
+                    </div>
+                </div>
+
+                <div class="breadcrumb-line">
+                    <ul class="breadcrumb">
+                        <li><a th:href="@{/admin/home}"><i class="icon-home2 position-left"></i> Home</a></li>
+                        <li class="active">Mail Template</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /page header -->
+
+
+            <!-- Content area -->
+            <div class="content">
+                <!-- Form horizontal -->
+                <div class="panel panel-flat">
+                    <div class="panel-body">
+                        <form class="form-horizontal" th:action="@{/admin/mail-template}" method="post" enctype="multipart/form-data">
+                            <fieldset class="content-group">
+                                <legend class="text-bold">Custom Fields</legend>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Mail Subject *</label>
+                                        <div class="col-lg-10">
+                                            <input name="subject" type="text" maxlength="255" class="form-control"
+                                                   th:value="${template.getSubject()}" placeholder="News: $4B Brave New World of Marijuana Business" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Image</label>
+                                        <div class="col-lg-10">
+                                            <input name="imageFile" type="file" class="file-styled">
+                                            <span class="help-block">Only accept PNG or JPG (size < 2MB)</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Overwrite Image</label>
+                                        <div class="col-lg-10">
+                                            <label>
+                                                <input name="overwriteImage" type="checkbox" class="switch" data-size="mini" data-on-text="On" data-off-text="Off" data-on-color="success" data-off-color="default" checked="checked">
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Title *</label>
+                                        <div class="col-lg-10">
+                                            <input name="title" type="text" maxlength="255" class="form-control"
+                                                   th:value="${template.getTitle()}" placeholder="$4B Brave New World: On-the-ground updates from California on first day of rec cannabis sales"
+                                                   required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Content *</label>
+                                        <div class="col-lg-10">
+                                            <textarea name="content" rows="15" cols="5" class="form-control summernote" style="resize:vertical"
+                                                      th:inline="text" placeholder="Marijuana Business Daily reporter John Schroyer is on the ground in Berkeley, California, and will post live updates throughout New Year's Day from the longest-operating medical cannabis dispensary in the country - Berkeley Patients Group (BPG). Check out his posts for an inside look at one store's first day selling recreational marijuana as well as insight on the launch of California's recreational marijuana industry."
+                                                      required>[[${template.getContent()}]]</textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-right">
+                                        <div class="button-group">
+                                            <button type="reset" class="btn btn-default"><i
+                                                    class="icon-loop3 position-left"></i>Reset
+                                            </button>
+                                            <button type="submit" class="btn bg-teal"><i
+                                                    class="icon-arrow-up16 position-left"></i>Save & Update
+                                            </button>
+                                        </div>
+                                    </div>
+
+                            </fieldset>
+
+                        </form>
+                    </div>
+                </div>
+                <!-- /form horizontal -->
+
+
+                <div class="panel panel-flat">
+                    <div class="panel-body">
+                        <form class="form-horizontal">
+                            <fieldset class="content-group">
+                                <legend class="text-bold">Preview</legend>
+                                <iframe style="width: 100%; min-height: 224px; background-color: #eaeaea" th:attr="srcdoc=${previewHtml}" frameborder="0" onload="resizeIframe(this)"></iframe>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <!--<div class="footer text-muted">-->
+                    <!--© 2018. <a href="#">Codeager IO</a>, theme by <a-->
+                        <!--href="http://themeforest.net/user/Kopyov" target="_blank">Eugene Kopyov</a>-->
+                <!--</div>-->
+                <!-- /footer -->
+
+            </div>
+            <!-- /content area -->
+
+        </div>
+        <!-- /main content -->
+
+    </div>
+    <!-- /page content -->
+
+</div>
+<!-- /page container -->
+
+</body>
+</html>

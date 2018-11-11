@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="lang=${#locale.language}" th:lang="${lang}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="#{page.title.contact}">Contact Request - Ecom Backend System</title>
+
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet"
+          type="text/css">
+    <link th:href="@{/assets/css/icons/icomoon/styles.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/core.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/components.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/colors.min.css}" rel="stylesheet" type="text/css">
+    <!-- /global stylesheets -->
+
+    <!-- Core JS files -->
+    <script type="text/javascript" th:src="@{/assets/js/plugins/loaders/pace.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/core/libraries/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/core/libraries/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/loaders/blockui.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/ui/nicescroll.min.js}"></script>
+    <!-- /core JS files -->
+
+    <!-- Theme JS files -->
+    <script type="text/javascript" th:src="@{/assets/js/plugins/forms/selects/select2.min.js}"></script>
+
+    <script type="text/javascript" th:src="@{/assets/js/core/app.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/nicescroll.activator.js}"></script>
+    <!-- /theme JS files -->
+
+</head>
+
+<body class="navbar-top">
+
+<!-- Main navbar -->
+<th:block th:replace="fragments/navbar::topbar"></th:block>
+<!-- /main navbar -->
+
+
+<!-- Page container -->
+<div class="page-container">
+
+    <!-- Page content -->
+    <div class="page-content">
+
+        <!-- Main sidebar -->
+        <th:block th:replace="fragments/navbar::sidebar('Contact Request')"></th:block>
+        <!-- /main sidebar -->
+
+
+        <!-- Main content -->
+        <div class="content-wrapper">
+
+            <!-- Page header -->
+            <div class="page-header">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Home</span> -
+                            Contact Request</h4>
+                    </div>
+                </div>
+
+                <div class="breadcrumb-line">
+                    <ul class="breadcrumb">
+                        <li><a th:href="@{/admin/home}"><i class="icon-home2 position-left"></i> Home</a></li>
+                        <li class="active">Contact Request</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /page header -->
+
+
+            <!-- Content area -->
+            <div class="content">
+                <div class="panel panel-flat">
+                    <div id="DataTables_Table_2_wrapper" class="dataTables_wrapper no-footer">
+                        <div class="datatable-scroll">
+                            <table class="table dataTable no-footer" id="DataTables_Table_2"
+                                   role="grid" aria-describedby="DataTables_Table_2_info">
+                                <thead>
+                                <tr role="row">
+                                    <th tabindex="0" aria-controls="DataTables_Table_2" rowspan="1"
+                                        colspan="1">Name
+                                    </th>
+                                    <th tabindex="0" aria-controls="DataTables_Table_2" rowspan="1"
+                                        colspan="1">Email
+                                    </th>
+                                    <th tabindex="0" aria-controls="DataTables_Table_2" rowspan="1"
+                                        colspan="1">Message
+                                    </th>
+                                    <th tabindex="0" aria-controls="DataTables_Table_2" rowspan="1"
+                                        colspan="1">Create Time
+                                    </th>
+                                    <th tabindex="0" aria-controls="DataTables_Table_2" rowspan="1"
+                                        colspan="1">Update Time
+                                    </th>
+                                    <th tabindex="0" aria-controls="DataTables_Table_2" rowspan="1"
+                                        colspan="1">Status
+                                    </th>
+                                    <th class="text-center" rowspan="1" colspan="1"
+                                        aria-label="Actions" style="width: 100px;">Actions
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr role="row" th:each="item:${page}">
+                                    <td th:text="${item.getFirstName() + ' ' + item.getLastName()}"></td>
+                                    <td><a th:href="${'mailto:' + item.getEmail()}" th:text="${item.getEmail()}"></a></td>
+                                    <td th:text="${item.getContent()}"></td>
+                                    <td th:text="${#temporals.format(item.getCreateTime(), 'MM/dd HH:mm:ss')}"></td>
+                                    <td th:text="${#temporals.format(item.getUpdateTime(), 'MM/dd HH:mm:ss')}"></td>
+                                    <td th:if="${item.isSent()}"><span class="label label-success">Informed</span></td>
+                                    <td th:if="${!item.isSent()&&item.getCreateTime()!=item.getUpdateTime()}"><span
+                                            class="label label-warning">Failure</span></td>
+                                    <td th:if="${!item.isSent()&&item.getCreateTime()==item.getUpdateTime()}"><span
+                                            class="label label-info">Pending</span></td>
+                                    <td class="text-center">
+                                        <a class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to delete this item?')" th:href="'./contact/delete/'+${item.getId()}+'?pageSize='+${page.getPageSize()}+'&pageNum='+${page.getPageNum()}"><i class="icon-trash"></i></a>
+                                        <!--<ul class="icons-list">-->
+                                            <!--<li class="dropdown">-->
+                                                <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown"-->
+                                                   <!--aria-expanded="false">-->
+                                                    <!--<i class="icon-menu9"></i>-->
+                                                <!--</a>-->
+
+                                                <!--<ul class="dropdown-menu dropdown-menu-right">-->
+                                                    <!--<li><a href="#"><i class="icon-redo2"></i> Resend</a>-->
+                                                    <!--</li>-->
+                                                    <!--<li><a th:href="'./contact/delete/'+${item.getId()}"><i class="icon-trash"></i> Delete</a>-->
+                                                    <!--</li>-->
+                                                <!--</ul>-->
+                                            <!--</li>-->
+                                        <!--</ul>-->
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="datatable-footer">
+                            <div class="dataTables_info" id="DataTables_Table_2_info" role="status" aria-live="polite"
+                                 th:text="|Showing ${page.getStartRow()+1} to ${page.getEndRow()} of ${page.getTotal()} entries|">
+                            </div>
+                            <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_2_paginate">
+                                <a th:if="${page.getPageNum()<=1}" class="paginate_button previous disabled">←</a>
+                                <a th:if="${page.getPageNum()>1}" th:href="@{./contact(pageNum=${page.getPageNum()-1})}" class="paginate_button previous">←</a>
+                                <!--<span>-->
+                                    <!--<a class="paginate_button current">1</a>-->
+                                    <!--<a class="paginate_button">2</a>-->
+                                    <!--<a class="paginate_button">3</a>-->
+                                <!--</span>-->
+                                <a th:if="${page.getEndRow()>=page.getTotal()}" class="paginate_button next disabled">→</a>
+                                <a th:if="${page.getEndRow()<page.getTotal()}" th:href="@{./contact(pageNum=${page.getPageNum()+1})}" class="paginate_button next">→</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Footer -->
+                <!--<div class="footer text-muted">-->
+                    <!--© 2018. <a href="#">Codeager IO</a>, theme by <a-->
+                        <!--href="http://themeforest.net/user/Kopyov" target="_blank">Eugene Kopyov</a>-->
+                <!--</div>-->
+                <!-- /footer -->
+
+            </div>
+            <!-- /content area -->
+
+        </div>
+        <!-- /main content -->
+
+    </div>
+    <!-- /page content -->
+
+</div>
+<!-- /page container -->
+
+</body>
+</html>

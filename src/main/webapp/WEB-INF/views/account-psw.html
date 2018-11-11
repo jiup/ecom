@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="lang=${#locale.language}" th:lang="${lang}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="#{page.title.account-psw}">Change Password - Ecom Backend System</title>
+
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet"
+          type="text/css">
+    <link th:href="@{/assets/css/icons/icomoon/styles.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/core.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/components.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/colors.min.css}" rel="stylesheet" type="text/css">
+    <!-- /global stylesheets -->
+
+    <!-- Core JS files -->
+    <script type="text/javascript" th:src="@{/assets/js/plugins/loaders/pace.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/core/libraries/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/core/libraries/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/loaders/blockui.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/ui/nicescroll.min.js}"></script>
+    <!-- /core JS files -->
+
+    <!-- Theme JS files -->
+    <script type="text/javascript" th:src="@{/assets/js/plugins/forms/styling/switchery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/forms/styling/uniform.min.js}"></script>
+
+    <script type="text/javascript" th:src="@{/assets/js/core/app.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/nicescroll.activator.js}"></script>
+    <!-- /theme JS files -->
+
+    <script>
+        $(function () {
+            var params = (new URL(document.location)).searchParams;
+            var resp = params && params.get("resp");
+            if (resp) {
+                alert(unescape(resp));
+            }
+
+            $("#submitBtn").on("click", function () {
+                if ($("input[name=oldPassword]").val().length < 8 || $("input[name=newPassword]").val().length < 8) {
+                    alert("Password needs at least 8 characters");
+                    return false;
+                }
+
+                if ($("input[name=newPassword]").val() != $("#pswConfirm").val()) {
+                    alert("Inconsistent password entry");
+                    $("#pswConfirm").val("");
+                } else {
+                    if ($("input[name=oldPassword]").val() === $("input[name=newPassword]").val()) {
+                        alert("Cannot set the same password");
+                        $("input[name=newPassword]").val("");
+                        $("#pswConfirm").val("");
+                    } else {
+                        $("#pswForm").submit();
+                    }
+                }
+            });
+        })
+    </script>
+</head>
+
+<body class="navbar-top">
+
+<!-- Main navbar -->
+<th:block th:replace="fragments/navbar::topbar"></th:block>
+<!-- /main navbar -->
+
+
+<!-- Page container -->
+<div class="page-container">
+
+    <!-- Page content -->
+    <div class="page-content">
+
+        <!-- Main sidebar -->
+        <th:block th:replace="fragments/navbar::sidebar('Change Password')"></th:block>
+        <!-- /main sidebar -->
+
+
+        <!-- Main content -->
+        <div class="content-wrapper">
+
+            <!-- Page header -->
+            <div class="page-header">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Home</span> -
+                            Change Password</h4>
+                    </div>
+                </div>
+
+                <div class="breadcrumb-line">
+                    <ul class="breadcrumb">
+                        <li><a th:href="@{/admin/home}"><i class="icon-home2 position-left"></i> Home</a></li>
+                        <li class="active">Change Password</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /page header -->
+
+
+            <!-- Content area -->
+            <div class="content">
+                <!-- Form horizontal -->
+                <div class="panel panel-flat">
+                    <div class="panel-body">
+                        <form id="pswForm" class="form-horizontal" th:action="@{/admin/account/password}" method="post">
+                            <fieldset>
+                                <legend class="text-bold">Change My Password</legend>
+
+                                <div class="form-group">
+                                    <label class="control-label col-lg-2">Old Password</label>
+                                    <div class="col-lg-10">
+                                        <input name="oldPassword" type="password" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-lg-2">New Password</label>
+                                    <div class="col-lg-10">
+                                        <input name="newPassword" type="password" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-lg-2">Repeat New Password</label>
+                                    <div class="col-lg-10">
+                                        <input id="pswConfirm" type="password" class="form-control" required>
+                                        <span class="help-block">Password needs at least 8 characters</span>
+                                    </div>
+                                </div>
+
+                                <div class="text-right">
+                                    <div class="button-group">
+                                        <a th:href="@{/admin/account}" class="btn btn-default">
+                                            <i class="icon-user position-left"></i>Personal Info
+                                        </a>
+                                        <button id="submitBtn" class="btn bg-teal"><i
+                                                class="icon-arrow-up16 position-left"></i>Submit
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </fieldset>
+
+                        </form>
+                    </div>
+                </div>
+                <!-- /form horizontal -->
+            </div>
+            <!-- /content area -->
+
+        </div>
+        <!-- /main content -->
+
+    </div>
+    <!-- /page content -->
+
+</div>
+<!-- /page container -->
+
+</body>
+</html>

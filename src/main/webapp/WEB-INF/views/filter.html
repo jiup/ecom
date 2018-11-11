@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="lang=${#locale.language}" th:lang="${lang}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="#{page.title.filter}">Specification Filter - Ecom Backend System</title>
+
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet"
+          type="text/css">
+    <link th:href="@{/assets/css/icons/icomoon/styles.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/core.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/components.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/colors.min.css}" rel="stylesheet" type="text/css">
+    <!-- /global stylesheets -->
+
+    <!-- Core JS files -->
+    <script type="text/javascript" th:src="@{/assets/js/plugins/loaders/pace.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/core/libraries/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/core/libraries/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/loaders/blockui.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/ui/nicescroll.min.js}"></script>
+    <!-- /core JS files -->
+
+    <!-- Theme JS files -->
+    <script type="text/javascript" th:src="@{/assets/js/plugins/forms/styling/uniform.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/forms/styling/switch.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/forms/styling/switchery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/forms/selects/select2.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/forms/inputs/duallistbox.min.js}"></script>
+
+    <script type="text/javascript" th:src="@{/assets/js/core/app.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/nicescroll.activator.js}"></script>
+    <!-- /theme JS files -->
+
+    <script>
+        $(function () {
+            var params = (new URL(document.location)).searchParams;
+            var resp = params && params.get("resp");
+            if (resp) {
+                alert(unescape(resp));
+            }
+
+            var cat = params && params.get("cat");
+            if (!(cat)) {
+                $("#catSelector").attr("class", "col-md-12");
+                $("#catSelector ul").removeClass("bg-teal-400");
+                $("#specGrouper").hide();
+                $("#titleHelper").html("CATEGORIES<span style='color:#ef9a00;text-transform:none;float: right'><i class=\"icon-warning22 position-left\"></i>please select a category first.</span>");
+            } else {
+                $("#cat_"+cat).addClass("active");
+            }
+
+            // Multiple selection
+            $('.listbox-no-selection').bootstrapDualListbox({
+                preserveSelectionOnMove: 'moved',
+                moveOnSelect: false
+            });
+
+            $("#saveBtn").on("click", function() {
+                var $saveFormSelect = $("#saveForm select");
+                $("select#bootstrap-duallistbox-nonselected-list_ option").each(function(i, obj){
+                    var e = $(obj);
+                    if (e.attr("grouped")==="true") {
+                        $saveFormSelect.append(e.clone(false));
+                    }
+                });
+                $("select#bootstrap-duallistbox-selected-list_ option").each(function(i, obj){
+                    var e = $(obj);
+                    if (e.attr("grouped")==="false") {
+                        $saveFormSelect.append(e.clone(false));
+                    }
+                });
+                if ($saveFormSelect.find("option").length == 0) {
+                    alert("No changes found.");
+                    return;
+                }
+                $("#saveForm input[name='cat']").val(cat);
+                $saveFormSelect.find("option").prop('selected', true);
+                $("#saveForm").attr("action", "./filter/group/flip").submit();
+            })
+        });
+    </script>
+</head>
+
+<body class="navbar-top">
+
+<!-- Main navbar -->
+<th:block th:replace="fragments/navbar::topbar"></th:block>
+<!-- /main navbar -->
+
+
+<!-- Page container -->
+<div class="page-container">
+
+    <!-- Page content -->
+    <div class="page-content">
+
+        <!-- Main sidebar -->
+        <th:block th:replace="fragments/navbar::sidebar('Specification Filter')"></th:block>
+        <!-- /main sidebar -->
+
+
+        <!-- Main content -->
+        <div class="content-wrapper">
+
+            <!-- Page header -->
+            <div class="page-header">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Home</span> -
+                            Specification Filter</h4>
+                    </div>
+                </div>
+
+                <div class="breadcrumb-line">
+                    <ul class="breadcrumb">
+                        <li><a th:href="@{/admin/home}"><i class="icon-home2 position-left"></i> Home</a></li>
+                        <li class="active">Specification Filter</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /page header -->
+
+
+            <!-- Content area -->
+            <div class="content">
+                <div id="catSelector" class="col-md-4">
+                    <div class="panel panel-flat">
+                        <ul class="panel-body dropdown-menu bg-teal-400 active" style="display: block; position: static; width: 100%; margin-top: 0; float: none; border: none">
+                            <li class="dropdown-header"><i class="icon-menu7"></i><span id="titleHelper">Categories</span></li>
+                            <li th:if="${categories.size()>0}" class="divider"></li>
+                            <li th:each="category:${categories}" th:id="'cat_'+${category.getId()}">
+                                <a th:href="'./filter?cat='+${category.getId()}" th:title="${category.getPath()}" th:text="${category.getPath().replaceAll('/',' / ')}"></a>
+                            </li>
+                        </ul>
+                        <label th:if="${categories.size()==0}" class="text-muted"></label>
+                        <div th:if="${categories.size()==0}" class="panel-footer panel-footer-transparent">
+                            <ul><li>Empty Set.</li></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="specGrouper" class="col-md-8">
+                    <div class="panel panel-flat">
+                        <div class="panel-heading">
+                            <h5 class="panel-title">Specification Grouping</h5>
+                            Grouped items will be used for product filtering.
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="row" style="margin-bottom: 10px">
+                                <div class="col-md-6"><label class="label label-default label-block">UNGROUPED ITEMS</label></div>
+                                <div class="col-md-6"><label class="label label-default label-block">GROUPED ITEMS</label></div>
+                            </div>
+                            <select multiple="multiple" class="form-control listbox-no-selection">
+                                <option th:each="item:${specs}" th:attr="grouped=${item.isGrouped()}" th:selected="${item.isGrouped()}" th:text="${item.getName()}"></option>
+                            </select>
+
+                            <form id="saveForm" method="post">
+                                <input type="hidden" name="cat"/>
+                                <select multiple="multiple" name="targets" style="display: none"></select>
+                            </form>
+
+                            <div class="button-group text-right">
+                                <button id="saveBtn" class="btn bg-teal"><i class="icon-floppy-disk position-left"></i>Save &amp; Update</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /multiple selection -->
+                </div>
+
+            </div>
+            <!-- /content area -->
+
+        </div>
+        <!-- /main content -->
+
+    </div>
+    <!-- /page content -->
+
+</div>
+<!-- /page container -->
+
+</body>
+</html>

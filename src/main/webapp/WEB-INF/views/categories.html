@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="lang=${#locale.language}" th:lang="${lang}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="#{page.title.categories}">Categories - Ecom Backend System</title>
+
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet"
+          type="text/css">
+    <link th:href="@{/assets/css/icons/icomoon/styles.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/core.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/components.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/minified/colors.min.css}" rel="stylesheet" type="text/css">
+    <!-- /global stylesheets -->
+
+    <!-- Core JS files -->
+    <script type="text/javascript" th:src="@{/assets/js/plugins/loaders/pace.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/core/libraries/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/core/libraries/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/loaders/blockui.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/ui/nicescroll.min.js}"></script>
+    <!-- /core JS files -->
+
+    <!-- Theme JS files -->
+    <script type="text/javascript" th:src="@{/assets/js/core/libraries/jquery_ui/core.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/core/libraries/jquery_ui/effects.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/core/libraries/jquery_ui/interactions.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/forms/styling/uniform.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/forms/styling/switch.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/forms/styling/switchery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/forms/selects/select2.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/trees/fancytree_all.min.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/trees/fancytree_childcounter.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/plugins/extensions/contextmenu.js}"></script>
+
+    <script type="text/javascript" th:src="@{/assets/js/core/app.js}"></script>
+    <script type="text/javascript" th:src="@{/assets/js/nicescroll.activator.js}"></script>
+    <!-- /theme JS files -->
+
+    <script>
+        $(function () {
+            var params = (new URL(document.location)).searchParams;
+            var resp = params && params.get("resp");
+            if (resp) {
+                alert(unescape(resp));
+            }
+
+            $(".tree-json").fancytree({
+                // debugLevel: 0,
+                clickFolderMode: 3,
+                extensions: ["dnd", "edit"],
+                generateIds: true,
+                idPrefix: "cat_",
+                minExpandLevel: 1,
+                dnd: {
+                    autoExpandMS: 400,
+                    preventVoidMoves: true,
+                    preventRecursiveMoves: true,
+                    dragStart: function (node, data) {
+                        return true;
+                    },
+                    dragEnter: function (node, data) {
+                        return true;
+                    },
+                    dragDrop: function (node, data) {
+                        location.href = "./categories/move/" + data.otherNode.key + "/" + data.node.key;
+                    }
+                },
+                edit: {
+                    adjustWidthOfs: 0,
+                    inputCss: {minWidth: "0", background: "#ffec90"},
+                    triggerStart: ["f2", "dblclick", "shift+click", "mac+enter"],
+                    save: function (event, data) {
+                        location.href = "./categories/rename/" + data.node.key + "?name=" + data.input.val();
+                    }
+                }
+            });
+
+            $('.fancytree-node').contextmenu({
+                target: '.context-js-menu',
+                before: function (e) {
+                    $(".fancytree-node").removeClass("fancytree-active");
+                    $(e.currentTarget).addClass("fancytree-active");
+                    return true;
+                },
+                onItem: function (context, e) {
+                    var node = context[0].parentNode;
+                    var nodeId = node.id;
+                    if (nodeId) {
+                        var $node = $('#' + nodeId);
+                        nodeId = nodeId.substring(4);
+                        switch (e.currentTarget.id) {
+                            case 'context-add':
+                                $("#parentName").val($node.find(".fancytree-title:first").text());
+                                $("input[name='parent']").val(nodeId);
+                                $("#modal_form_horizontal").modal();
+                                break;
+                            case 'context-rename':
+                                $node.trigger('dblclick');
+                                break;
+                            case 'context-remove':
+                                if (confirm("This operation is irreversible, are you sure?")) {
+                                    location.href = "./categories/delete/" + nodeId;
+                                }
+                                break;
+                            case 'context-hide':
+                                location.href = "./categories/toggleStatus/" + nodeId;
+                                break;
+                        }
+                    }
+                }
+            });
+
+            $("#addBtn").on("click", function () {
+                $("#parentName").val("Root");
+                $("input[name='parent']").val(0);
+                $("#modal_form_horizontal").modal();
+            });
+
+            // onHide callback
+            $('.context-js-menu').on('hide.bs.context', function () {
+                $(".fancytree-node").removeClass("fancytree-active");
+            });
+        });
+    </script>
+
+    <style>
+        .isHidden {
+            color: #bbb;
+        }
+
+        .fancytree-title {
+            width: 95%;
+        }
+
+        .fancytree-active .fancytree-title, .fancytree-drag-source {
+            background: #f0f0f0;
+        }
+
+        .fancytree-title:hover {
+            background: #f0f0f0;
+        }
+    </style>
+
+</head>
+
+<body class="navbar-top">
+
+<!-- Main navbar -->
+<th:block th:replace="fragments/navbar::topbar"></th:block>
+<!-- /main navbar -->
+
+
+<!-- Page container -->
+<div class="page-container">
+
+    <!-- Page content -->
+    <div class="page-content">
+
+        <!-- Main sidebar -->
+        <th:block th:replace="fragments/navbar::sidebar('Structure')"></th:block>
+        <!-- /main sidebar -->
+
+
+        <!-- Main content -->
+        <div class="content-wrapper">
+
+            <!-- Page header -->
+            <div class="page-header">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Home</span> -
+                            Categories</h4>
+                    </div>
+                </div>
+
+                <div class="breadcrumb-line">
+                    <ul class="breadcrumb">
+                        <li><a th:href="@{/admin/home}"><i class="icon-home2 position-left"></i> Home</a></li>
+                        <li class="active">Categories</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /page header -->
+
+
+            <!-- Content area -->
+            <div class="content">
+                <div class="panel panel-flat">
+                    <div class="panel-heading">
+                        <h6 class="panel-title"><i class="icon-database-check position-left"></i><strong>Product
+                            Category Hierarchy</strong></h6>
+                        <div class="heading-elements">
+                            <div class="heading-btn">
+                                <button id="addBtn" class="btn btn-default dropdown-toggle">
+                                    <i class="icon-plus2 position-left"></i>Add Root Category
+                                </button>
+                            </div>
+                            <div class="heading-btn">
+                                <a href="./categories" type="button" class="btn btn-info">
+                                    <i class="icon-reload-alt position-left"></i>Refresh Page
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="tree-json well border-left-info border-left-lg" data-type="json">
+                            <div class="hidden" th:text="${fancytree}"></div>
+                        </div>
+                        <div class="context-js-menu">
+                            <ul class="dropdown-menu">
+                                <li id="context-add"><a href="#"><i class="icon-file-plus"></i> Add Subcategory</a></li>
+                                <li id="context-rename"><a href="#"><i class="icon-spell-check"></i> Rename</a></li>
+                                <li id="context-remove"><a href="#"><i class="icon-file-minus"></i> Remove</a></li>
+                                <li class="divider"></li>
+                                <li id="context-hide" title="Toggle fe-category-menu display status"><a href="#"><i
+                                        class="icon-eye2"></i>Hide/Show</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="panel-footer panel-footer-transparent" style="color:#aaaaaa">
+                        <ul>
+                            <li th:if="${fancytree.equals('[]')}" style="color:#ef9a00">
+                                <i class="icon-warning22 position-left"></i>please add a root category.
+                            </li>
+                            <li th:if="${!fancytree.equals('[]')}" style="color:#00bcd4">
+                                <i class="icon-notification2 position-left"></i>right click on an item for more actions, drag to change directory.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /embed JSON data -->
+
+                <!--<div class="panel panel-flat">-->
+                <!--<div class="panel-heading">-->
+                <!--<h6 class="panel-title">Table tree</h6>-->
+                <!--<div class="heading-elements">-->
+                <!--<ul class="icons-list">-->
+                <!--<li><a data-action="collapse"></a></li>-->
+                <!--<li><a data-action="reload"></a></li>-->
+                <!--<li><a data-action="close"></a></li>-->
+                <!--</ul>-->
+                <!--</div>-->
+                <!--</div>-->
+
+                <!--<div class="panel-body">-->
+                <!--The following example demonstrates rendered tree as a table (aka tree grid) and support keyboard navigation in a grid with embedded input controls. Table functionality is based on Fancytree's <code>table.js</code> extension. The tree table extension takes care of rendering the node into one of the columns. Other columns have to be rendered in the <code>renderColumns</code> event.-->
+                <!--</div>-->
+
+                <!--<div class="table-responsive">-->
+                <!--<table class="table table-bordered tree-table">-->
+                <!--<thead>-->
+                <!--<tr>-->
+                <!--<th style="width: 46px;"></th>-->
+                <!--<th style="width: 80px;">#</th>-->
+                <!--<th>Items</th>-->
+                <!--<th style="width: 80px;">Key</th>-->
+                <!--<th style="width: 46px;">Like</th>-->
+                <!--</tr>-->
+                <!--</thead>-->
+                <!--<tbody>-->
+                <!--<tr>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--<td></td>-->
+                <!--</tr>-->
+                <!--</tbody>-->
+                <!--</table>-->
+                <!--</div>-->
+                <!--</div>-->
+
+
+            </div>
+            <!-- /content area -->
+
+            <!-- Horizontal form modal -->
+            <div id="modal_form_horizontal" class="modal fade">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 id="multi_func_form_title" class="modal-title"><i
+                                    class="icon-file-plus2 position-left"></i>Add Category</h4>
+                        </div>
+
+                        <form action="./categories/add" method="post" class="form-horizontal">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Parent</label>
+                                    <div class="col-sm-9">
+                                        <input id="parentName" value="" type="text" min="0" class="form-control"
+                                               readonly>
+                                        <input name="parent" type="hidden" value="0" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Name</label>
+                                    <div class="col-sm-9">
+                                        <input name="name" type="text" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <!--<div class="form-group">-->
+                                <!--<label class="control-label col-sm-3">Prompt Text</label>-->
+                                <!--<div class="col-sm-9">-->
+                                <!--<textarea name="prompt" type="text" class="form-control"></textarea>-->
+                                <!--</div>-->
+                                <!--</div>-->
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" id="modalCloseBtn" class="btn btn-link" data-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- /horizontal form modal -->
+
+        </div>
+        <!-- /main content -->
+
+    </div>
+    <!-- /page content -->
+
+</div>
+<!-- /page container -->
+
+</body>
+</html>

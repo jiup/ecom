@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <properties url="file:///D:/Desktop/ecom/init/mybatis-generator/mybatis-generator.properties"/>
+
+    <context id="fromMysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <property name="javaFileEncoding" value="UTF-8"/>
+
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.VirtualPrimaryKeyPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.MapperAnnotationPlugin"/>
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="${datasource.driver}"
+                        connectionURL="${datasource.url}"
+                        userId="${datasource.username}"
+                        password="${datasource.password}"/>
+
+        <javaTypeResolver type="org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl">
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.codeager.ecom.domain"
+                            targetProject="${project.external.dir}">
+            <property name="constructorBased" value="false"/>
+            <property name="immutable" value="false"/>
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="com.codeager.ecom.dao.mapper"
+                         targetProject="${project.external.dir}">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="ANNOTATEDMAPPER"
+                             targetPackage="com.codeager.ecom.dao.mapper"
+                             targetProject="${project.external.dir}">
+            <!--<property name="rootInterface" value=""/>-->
+        </javaClientGenerator>
+
+        <!--<table tableName="t_contact"-->
+               <!--domainObjectName="Contact"-->
+               <!--selectByExampleQueryId="false"-->
+               <!--selectByPrimaryKeyQueryId="true">-->
+            <!--<property name="useColumnIndexes" value="true"/>-->
+            <!--<property name="selectAllOrderByClause" value="UPDATE_TIME DESC"/>-->
+            <!--<generatedKey column="CONTACT_ID" identity="true" sqlStatement="MySql"/>-->
+            <!--<columnOverride column="CONTACT_ID" property="id" javaType="long"/>-->
+            <!--<columnOverride column="TYPE" javaType="short"/>-->
+            <!--<columnOverride column="IF_SENT" property="sent" jdbcType="TINYINT" javaType="boolean"/>-->
+            <!--<columnOverride column="IF_DELETE" property="deleted" jdbcType="TINYINT" javaType="boolean"/>-->
+            <!--<columnOverride column="CREATE_TIME" javaType="java.time.ZonedDateTime"/>-->
+            <!--<columnOverride column="UPDATE_TIME" javaType="java.time.ZonedDateTime"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_quote_request" domainObjectName="QuoteRequest">-->
+            <!--<property name="useColumnIndexes" value="true"/>-->
+            <!--<property name="selectAllOrderByClause" value="UPDATE_TIME DESC"/>-->
+            <!--<generatedKey column="QUOTE_ID" identity="true" sqlStatement="MySql"/>-->
+            <!--<columnOverride column="QUOTE_ID" property="id" javaType="long"/>-->
+            <!--<columnOverride column="COMPANY_ADDRESS" property="address"/>-->
+            <!--<columnOverride column="COMPANY_ADDRESS_EXT" property="addressExtend"/>-->
+            <!--<columnOverride column="COMPANY_ADDRESS_CITY" property="city"/>-->
+            <!--<columnOverride column="COMPANY_ADDRESS_STATE" property="state"/>-->
+            <!--<columnOverride column="COMPANY_ADDRESS_ZIPCODE" property="zipCode"/>-->
+            <!--<columnOverride column="IF_PREFER_CALL" property="preferCall" jdbcType="TINYINT" javaType="boolean"/>-->
+            <!--<columnOverride column="IF_SENT" property="sent" jdbcType="TINYINT" javaType="boolean"/>-->
+            <!--<columnOverride column="IF_DELETE" property="deleted" jdbcType="TINYINT" javaType="boolean"/>-->
+            <!--<columnOverride column="ESTIMATE_QUANTITY" property="estimateQuantity" javaType="Integer"/>-->
+            <!--<columnOverride column="CREATE_TIME" javaType="java.time.ZonedDateTime"/>-->
+            <!--<columnOverride column="UPDATE_TIME" javaType="java.time.ZonedDateTime"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_administrator"-->
+        <!--domainObjectName="Administrator"-->
+        <!--selectByExampleQueryId="false"-->
+        <!--selectByPrimaryKeyQueryId="false">-->
+        <!--<property name="useColumnIndexes" value="true"/>-->
+        <!--<generatedKey column="ADMINISTRATOR_ID" sqlStatement="Mysql"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_mail_template" domainObjectName="MailTemplate">-->
+            <!--<property name="useColumnIndexes" value="true"/>-->
+            <!--<generatedKey column="MAIL_TEMPLATE_ID" identity="true" sqlStatement="MySql"/>-->
+            <!--<columnOverride column="MAIL_TEMPLATE_ID" property="id" javaType="long"/>-->
+            <!--<columnOverride column="MAIL_TEMPLATE_NAME" property="name"/>-->
+            <!--<columnOverride column="IF_DISABLE_UNSUBSCRIBE" property="hideUnsubscribeButton" jdbcType="TINYINT" javaType="boolean"/>-->
+            <!--<columnOverride column="IF_DELETE" property="deleted" jdbcType="TINYINT" javaType="boolean"/>-->
+            <!--<columnOverride column="CREATE_TIME" javaType="java.time.ZonedDateTime"/>-->
+            <!--<columnOverride column="UPDATE_TIME" javaType="java.time.ZonedDateTime"/>-->
+        <!--</table>-->
+        
+        <!--<table tableName="t_customer_ext" domainObjectName="ExtCustomer">-->
+            <!--<property name="useColumnIndexes" value="true"/>-->
+            <!--<generatedKey column="CUSTOMER_EXT_ID" identity="true" sqlStatement="MySql"/>-->
+            <!--<columnOverride column="CUSTOMER_EXT_ID" property="id" javaType="long"/>-->
+            <!--<columnOverride column="UPDATE_TIME" javaType="java.time.ZonedDateTime"/>-->
+            <!--<columnOverride column="IF_DELETE" property="deleted" jdbcType="TINYINT" javaType="boolean"/>-->
+            <!--<columnOverride column="IF_UNSUBSCRIBE" property="unsubscribe" jdbcType="TINYINT" javaType="boolean"/>-->
+        <!--</table>-->
+        <!---->
+        <!--<table tableName="t_automail" domainObjectName="AutoMail">-->
+            <!--<property name="useColumnIndexes" value="true"/>-->
+            <!--<generatedKey column="MAIL_ID" identity="true" sqlStatement="MySql"/>-->
+            <!--<columnOverride column="MAIL_ID" property="id" javaType="long"/>-->
+            <!--<columnOverride column="MAIL_TYPE" property="type"/>-->
+            <!--<columnOverride column="MAIL_TO" property="mailTo"/>-->
+            <!--<columnOverride column="RECEIVER_GROUP" property="group"/>-->
+            <!--<columnOverride column="RECEIVER_ID" property="receiverId" javaType="long"/>-->
+            <!--<columnOverride column="COUNT" property="count" javaType="int"/>-->
+            <!--<columnOverride column="CREATE_TIME" javaType="java.time.ZonedDateTime"/>-->
+            <!--<columnOverride column="UPDATE_TIME" javaType="java.time.ZonedDateTime"/>-->
+            <!--<columnOverride column="IF_SENT" property="sent" jdbcType="TINYINT" javaType="boolean"/>-->
+            <!--<columnOverride column="IF_DELETE" property="deleted" jdbcType="TINYINT" javaType="boolean"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_product" domainObjectName="Product">-->
+            <!--<property name="useColumnIndexes" value="true"/>-->
+            <!--<generatedKey column="PRODUCT_ID" identity="true" sqlStatement="MySql"/>-->
+            <!--<columnOverride column="PRODUCT_ID" property="id" javaType="long"/>-->
+            <!--<columnOverride column="CATEGORY_ID" javaType="int"/>-->
+            <!--<columnOverride column="SORT_INDEX" javaType="long"/>-->
+            <!--<columnOverride column="IF_DELETE" property="deleted" jdbcType="TINYINT" javaType="boolean"/>-->
+            <!--<columnOverride column="CREATE_TIME" javaType="java.time.ZonedDateTime"/>-->
+            <!--<columnOverride column="UPDATE_TIME" javaType="java.time.ZonedDateTime"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_product_image" domainObjectName="ProductImage">-->
+            <!--<property name="useColumnIndexes" value="true"/>-->
+            <!--<generatedKey column="PRODUCT_IMAGE_ID" identity="true" sqlStatement="MySql"/>-->
+            <!--<columnOverride column="PRODUCT_IMAGE_ID" property="id" javaType="long"/>-->
+            <!--<columnOverride column="PRODUCT_ID" property="productId" javaType="long"/>-->
+            <!--<columnOverride column="IF_PRIOR" property="prior" jdbcType="TINYINT" javaType="boolean"/>-->
+            <!--<columnOverride column="CREATE_TIME" javaType="java.time.ZonedDateTime"/>-->
+            <!--<columnOverride column="UPDATE_TIME" javaType="java.time.ZonedDateTime"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_product_detail" domainObjectName="ProductDetail">-->
+            <!--<property name="useColumnIndexes" value="true"/>-->
+            <!--<generatedKey column="PRODUCT_DETAIL_ID" identity="true" sqlStatement="MySql"/>-->
+            <!--<columnOverride column="PRODUCT_DETAIL_ID" property="id" javaType="long"/>-->
+            <!--<columnOverride column="PRODUCT_ID" property="productId" javaType="long"/>-->
+            <!--<columnOverride column="IF_KV_PAIRS" property="kVPairs" jdbcType="TINYINT" javaType="boolean"/>-->
+            <!--<columnOverride column="VISIT_COUNT" javaType="long"/>-->
+            <!--<columnOverride column="CREATE_TIME" javaType="java.time.ZonedDateTime"/>-->
+            <!--<columnOverride column="UPDATE_TIME" javaType="java.time.ZonedDateTime"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_sku" domainObjectName="StockKeepingUnit">-->
+            <!--<property name="useColumnIndexes" value="true"/>-->
+            <!--<generatedKey column="SKU_ID" identity="true" sqlStatement="MySQL"/>-->
+            <!--<columnOverride column="SKU_ID" property="id" javaType="long"/>-->
+            <!--<columnOverride column="PRODUCT_ID" property="productId" javaType="long"/>-->
+            <!--<columnOverride column="SKU_SN" property="serialNumber"/>-->
+            <!--<columnOverride column="QUANTITY" javaType="int"/>-->
+            <!--<columnOverride column="IF_FROZEN" property="frozen" jdbcType="TINYINT" javaType="boolean"/>-->
+            <!--<columnOverride column="CREATE_TIME" javaType="java.time.ZonedDateTime"/>-->
+            <!--<columnOverride column="UPDATE_TIME" javaType="java.time.ZonedDateTime"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_product_spec" domainObjectName="Specification">-->
+            <!--<property name="useColumnIndexes" value="true"/>-->
+            <!--<generatedKey column="PRODUCT_SPEC_ID" identity="true" sqlStatement="MySQL"/>-->
+            <!--<columnOverride column="PRODUCT_SPEC_ID" property="id" javaType="long"/>-->
+            <!--<columnOverride column="CATEGORY_ID" javaType="int"/>-->
+            <!--<columnOverride column="SKU_ID" javaType="long"/>-->
+            <!--<columnOverride column="ATTR_NAME" property="name"/>-->
+            <!--<columnOverride column="ATTR_VALUE" property="value"/>-->
+            <!--<columnOverride column="UOM" property="unitsOfMeasurement"/>-->
+            <!--<columnOverride column="IF_GROUPED" property="grouped" jdbcType="TINYINT" javaType="boolean"/>-->
+            <!--<columnOverride column="CREATE_TIME" javaType="java.time.ZonedDateTime"/>-->
+        <!--</table>-->
+
+        <table tableName="t_category" domainObjectName="Category">
+            <property name="useColumnIndexes" value="true"/>
+            <generatedKey column="CATEGORY_ID" identity="true" sqlStatement="MySQL"/>
+            <columnOverride column="CATEGORY_ID" property="id" javaType="int"/>
+            <columnOverride column="CATEGORY_NAME" property="name"/>
+            <columnOverride column="IF_HIDDEN" property="hidden" jdbcType="TINYINT" javaType="boolean"/>
+            <columnOverride column="CREATE_TIME" javaType="java.time.ZonedDateTime"/>
+            <columnOverride column="UPDATE_TIME" javaType="java.time.ZonedDateTime"/>
+        </table>
+
+        <!--<table tableName="t_customer_registration"-->
+        <!--domainObjectName="CustomerRegistration"-->
+        <!--selectByExampleQueryId="false"-->
+        <!--selectByPrimaryKeyQueryId="false"-->
+        <!--enableCountByExample="false"-->
+        <!--enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false"-->
+        <!--enableUpdateByExample="false">-->
+        <!--<property name="ignoreQualifiersAtRuntime" value="false"/>-->
+        <!--<property name="selectAllOrderByClause" value="UPDATE_TIME"/>-->
+        <!--<property name="useColumnIndexes" value="true"/>-->
+        <!--<property name="selectAllOrderByClause" value="UPDATE_TIME DESC"/>-->
+        <!--&lt;!&ndash;<property name="virtualKeyColumns" value="EMAIL, LAST_NAME"/>&ndash;&gt;-->
+        <!--<generatedKey column="CUSTOMER_REGISTRATION_ID" identity="true" sqlStatement="MySql"/>-->
+        <!--<columnRenamingRule searchString="customerRegistrationId" replaceString="id"/>-->
+        <!--<ignoreColumn column="IF_SENT"/>-->
+        <!--<columnOverride column="CUSTOMER_REGISTRATION_ID"-->
+        <!--property="id"-->
+        <!--javaType="java.lang.Long"-->
+        <!--jdbcType="BIGINT"-->
+        <!--typeHandler="com.asdf.IH"/>-->
+        <!--</table>-->
+    </context>
+</generatorConfiguration>
