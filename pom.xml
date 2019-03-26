@@ -47,7 +47,7 @@
         <jcl-over-slf4j-version>1.7.25</jcl-over-slf4j-version>
         <logback-version>1.1.7</logback-version>
         <logback-ext-spring-version>0.1.4</logback-ext-spring-version>
-        <jackson-databind-version>2.9.6</jackson-databind-version>
+        <jackson-databind-version>2.9.8</jackson-databind-version>
         <springfox-version>2.7.0</springfox-version>
         <junit-version>4.12</junit-version>
 
